@@ -1,6 +1,5 @@
 public enum FishStates
 {
-    PickedUp, 
     Chilling, 
     Hungry, 
     Cooking, 

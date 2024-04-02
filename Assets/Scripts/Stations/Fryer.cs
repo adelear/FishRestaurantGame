@@ -27,8 +27,12 @@ public class Fryer : MonoBehaviour
                 other.transform.position = transform.position;
                 other.transform.parent = transform; 
                 fish.lockOntoNewPosition = true;
-                if (!fish.isCooking && fish.canCook) fish.StartCooking();
-                Debug.Log("Cooking yippee"); 
+                if (!fish.isCooking && fish.canCook)
+                {
+                    fish.isSeated = true;
+                    fish.StartCooking();
+                    Debug.Log("Cooking yippee");
+                }
             }
         }
     }

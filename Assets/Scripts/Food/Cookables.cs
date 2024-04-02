@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Cookables : Draggable
 {
+    [Header("Position Components")] 
+    public bool isSeated; // Controls whether or not the fish can move around the room 
+    public bool isBeingDragged; // Controls whether or not the fish is flailing  
     public Vector3 originalPosition;
     public bool lockOntoNewPosition;
     public bool isValidPosition;
 
-    private float cookingTimer = 0f; 
+    [Header("Cooking Components")] 
+    public float cookingTimer = 0f; 
     public bool isCooking = false;
-
-    private float foodQuality = 0f;
+    public float foodQuality = 0f;
     public bool canCook; 
 
-    private void Start()
+    protected virtual void Start()
     {
         originalPosition = transform.position;
         lockOntoNewPosition = false;
@@ -24,17 +27,19 @@ public class Cookables : Draggable
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
+        isBeingDragged = true; 
     }
 
-    protected override void OnMouseDrag()
+    protected override void OnMouseDrag() 
     {
         if (!lockOntoNewPosition) base.OnMouseDrag();
         else StartCoroutine(AllowDrag());
     }
 
-    protected void OnMouseUp() 
+    protected virtual void OnMouseUp() 
     {
         if (!isValidPosition) transform.position = originalPosition;
+        isBeingDragged = false; 
     }
 
     IEnumerator AllowDrag()

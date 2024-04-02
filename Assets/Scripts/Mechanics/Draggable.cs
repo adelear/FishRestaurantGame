@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
+    public LayerMask draggableLayer; 
     Vector3 mousePosition;
     public float zOffsetFactor = 0.01f;
     float maxZPos = 3f;
@@ -13,9 +14,16 @@ public class Draggable : MonoBehaviour
     {
         return Camera.main.WorldToScreenPoint(transform.position); 
     }
+
     protected virtual void OnMouseDown()
     {
-        mousePosition = Input.mousePosition - GetMouseWorldPosition();  
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, draggableLayer))
+        {
+            mousePosition = Input.mousePosition - GetMouseWorldPosition();
+        }
     }
 
     protected virtual void OnMouseDrag()

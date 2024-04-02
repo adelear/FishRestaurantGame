@@ -15,6 +15,7 @@ public class Seat : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             Fish fish = other.GetComponent<Fish>();
+            if (!fish.canCook) return; 
             if (!IsSeatEmpty())
             {
                 fish.isValidPosition = false;
@@ -24,7 +25,8 @@ public class Seat : MonoBehaviour
             else
             {
                 other.transform.position = transform.position;
-                other.transform.parent = transform; 
+                other.transform.parent = transform;
+                fish.isSeated = true; 
                 fish.lockOntoNewPosition = true;
             }
         }
@@ -38,6 +40,7 @@ public class Seat : MonoBehaviour
             Fish fish = other.GetComponent<Fish>();
             fish.isValidPosition = true; 
             fish.lockOntoNewPosition = false;
+            fish.isSeated = false; 
 
             if (other.transform.parent == transform) other.transform.parent = null; 
         }
