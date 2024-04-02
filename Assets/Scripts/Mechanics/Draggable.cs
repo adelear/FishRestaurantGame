@@ -10,13 +10,18 @@ public class Draggable : MonoBehaviour
     {
         return Camera.main.WorldToScreenPoint(transform.position); 
     }
-    private void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         mousePosition = Input.mousePosition - GetMouseWorldPosition();  
     }
 
-    private void OnMouseDrag()
+    protected virtual void OnMouseDrag()
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition); 
+    }
+
+    protected virtual void OnMouseUp()
+    {
+        
     }
 }
