@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Fish : Draggable
+public class Fish : Cookables
 {
-    public FishType fishType; 
-    public Vector3 originalPosition;
-    public bool lockOntoNewPosition;
-    public bool isValidPosition; 
-
     private void Start()
     {
         originalPosition = transform.position; 
@@ -27,7 +22,7 @@ public class Fish : Draggable
         else StartCoroutine(AllowDrag()); 
     }
 
-    protected void OnMouseUp()
+    protected override void OnMouseUp()
     {
         if (!isValidPosition) transform.position = originalPosition; 
     }
@@ -36,5 +31,6 @@ public class Fish : Draggable
     {
         yield return new WaitForSeconds(0.5f);
         lockOntoNewPosition = false; 
-    }
+    } 
 } 
+ 
