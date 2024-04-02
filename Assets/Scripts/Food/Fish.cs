@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Fish : Cookables
 {
@@ -14,6 +16,10 @@ public class Fish : Cookables
 
     // From Hungry, timer begins. They must be fed within one minute OR they will leave Hangry 
     // From Hungry, if fed, they will be served, give a review in speech bubble, then disappear 
+
+    private Coroutine hungerCoroutine; // coroutine before they get hungry 
+    private Coroutine feedingTimeCoroutine; //coroutine that starts where they must be fed before leaving
+    private float feedingDuration = 60f; 
     public FishStates CurrentState
     {
         get { return currentState; }
