@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Chair
+  - Fish
+  - Ground
   layers:
   - Default
   - TransparentFX

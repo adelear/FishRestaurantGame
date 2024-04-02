@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
-    Vector3 mousePosition; 
+    Vector3 mousePosition;
+    public float zOffsetFactor = 0.01f;
+    float maxZPos = 3f;
+    float minZPos = -2f;
 
     private Vector3 GetMouseWorldPosition()
     {
@@ -17,11 +20,31 @@ public class Draggable : MonoBehaviour
 
     protected virtual void OnMouseDrag()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition); 
-    }
+        Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
 
-    protected virtual void OnMouseUp()
-    {
-        
+        float excludedHeight = 50f;
+        float adjustedMouseY = Mathf.Clamp(Input.mousePosition.y + excludedHeight, 0f, Screen.height);
+        float zMovement = (adjustedMouseY - Screen.height / 2f) * zOffsetFactor;
+        newPos.z += zMovement;
+        newPos.z = Mathf.Clamp(newPos.z + zMovement, minZPos, maxZPos); 
+
+        Collider[] colliders = Physics.OverlapSphere(newPos, GetComponent<Collider>().bounds.extents.magnitude);
+        bool hasCollision = false;
+        foreach (Collider collider in colliders)
+        {
+            if (collider != GetComponent<Collider>())
+            {
+                hasCollision = true;
+                break;
+            }
+        }
+
+        if (hasCollision && newPos.y < transform.position.y)
+        {
+            newPos.y = transform.position.y;
+            GetComponent<Rigidbody>().velocity = Vector3.zero; 
+        }
+
+        transform.position = newPos;
     }
 }

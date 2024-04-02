@@ -5,13 +5,16 @@ using UnityEngine.EventSystems;
 
 public class Fish : Draggable
 {
-    Vector3 originalPosition;
-    bool lockOntoNewPosition; 
+    public FishType fishType; 
+    public Vector3 originalPosition;
+    public bool lockOntoNewPosition;
+    public bool isValidPosition; 
 
     private void Start()
     {
         originalPosition = transform.position; 
         lockOntoNewPosition = false; 
+        isValidPosition = true; 
     }
     protected override void OnMouseDown()
     {
@@ -21,39 +24,12 @@ public class Fish : Draggable
     protected override void OnMouseDrag()
     {
         if (!lockOntoNewPosition) base.OnMouseDrag();
-        else
-        {
-            StartCoroutine(AllowDrag()); 
-        }
+        else StartCoroutine(AllowDrag()); 
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnMouseUp()
     {
-        // Lock Onto Chair
-        if (other.gameObject.CompareTag("Chair"))
-        {
-            transform.position = other.transform.position; 
-            lockOntoNewPosition = true; 
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // Lock Onto Chair
-        if (other.gameObject.CompareTag("Chair"))
-        {
-            transform.position = originalPosition;
-            lockOntoNewPosition = false;
-        }
-    }
-
-
-    protected override void OnMouseUp()
-    {
-        if (!lockOntoNewPosition)
-        {
-            transform.position = originalPosition; 
-        }
+        if (!isValidPosition) transform.position = originalPosition; 
     }
 
     IEnumerator AllowDrag()
