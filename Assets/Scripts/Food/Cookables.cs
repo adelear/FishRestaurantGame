@@ -9,10 +9,10 @@ public class Cookables : Draggable
     public bool isValidPosition;
 
     private float cookingTimer = 0f; 
-    private bool isCooking = false;
+    public bool isCooking = false;
 
     private float foodQuality = 0f;
-    private bool canCook; 
+    public bool canCook; 
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class Cookables : Draggable
         else StartCoroutine(AllowDrag());
     }
 
-    protected virtual void OnMouseUp() 
+    protected void OnMouseUp() 
     {
         if (!isValidPosition) transform.position = originalPosition;
     }
@@ -50,27 +50,26 @@ public class Cookables : Draggable
     {
         if (isCooking)
         {
-            cookingTimer += Time.deltaTime; 
-
-            if (cookingTimer >= 5f)
-            {
-                DetermineQuality();
-            }
+            cookingTimer += Time.deltaTime;
+            Debug.Log("Cookign Timer: " + cookingTimer);
         }
     }
 
-    private void StartCooking()
+    public void StartCooking()
     {
         if (!isCooking && canCook)
         {
             isCooking = true;
             canCook = false; 
-            cookingTimer = 0f;
-            foodQuality = 0f;
         }
     }
 
-    private void DetermineQuality()
+    public void StopCooking()
+    {
+        if (isCooking) DetermineQuality();
+    }
+
+    public void DetermineQuality()
     {
         float qualityPercentage = cookingTimer / 5f; 
         foodQuality = Mathf.Clamp(qualityPercentage * 5f, 0f, 5f); 
