@@ -6,13 +6,14 @@ public class Fryer : MonoBehaviour
 {
     bool IsSeatEmpty()
     {
-        bool empty = (GetComponentInChildren<Fish>() ? false : true) || (GetComponentInChildren<Cookables>() ? false : true);
-        return empty; 
+        if (GetComponentInChildren<Fish>() || GetComponentInChildren<Cookables>()) return false;
+        else return true; 
     } 
 
     private void OnTriggerEnter(Collider other)
     {
         // Lock Onto Fryer if seat is empty 
+        if (!IsSeatEmpty()) return; 
         if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty"))
         {
             Cookables cookables = other.GetComponent<Cookables>();
@@ -40,18 +41,26 @@ public class Fryer : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // Lock Onto Chair
+        if (!IsSeatEmpty()) return; 
         if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty"))
         {
             Cookables cookables = other.GetComponent<Cookables>();
-            cookables.isValidPosition = true;
-            cookables.lockOntoNewPosition = false;
 
-            if (other.transform.parent == transform)
+            // If the exiting cookable is the one currently cooking in the fryer,
+            // don't remove it from the parent and stop cooking
+            if (cookables.isSeated && cookables.isCooking && transform.IsChildOf(cookables.transform))
             {
-                cookables.StopCooking();
+                cookables.isValidPosition = true;
+                cookables.lockOntoNewPosition = false;
+                cookables.StopCooking(); 
+            }
+            else 
+            {
+                cookables.isValidPosition = true;
+                cookables.lockOntoNewPosition = false;
                 other.transform.parent = null;
-            } 
+            }
         }
-    } 
+    }
+
 }
