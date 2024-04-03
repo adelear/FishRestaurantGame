@@ -31,9 +31,6 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject settingsMenu;
 
-    [Header("Text")]
-    [SerializeField] TMP_Text scoreText; 
-
     [Header("Sliders")]
     [SerializeField] Slider masterSlider;
     [SerializeField] Slider musicSlider;
@@ -86,12 +83,6 @@ public class CanvasManager : MonoBehaviour
             sfxSlider.onValueChanged.AddListener((value) => OnSliderValueChanged(value, "SFXVol")); 
         }
 
-        if (scoreText) 
-        {
-            GameManager.Instance.OnScoreValueChanged.AddListener((value) => UpdateScoreText(value));
-            scoreText.text = "Score: " + GameManager.Instance.Score.ToString();
-        }
-
         if (resumeGame)
         {
             EventTrigger resumeGameTrigger = resumeGame.gameObject.AddComponent<EventTrigger>();
@@ -116,11 +107,6 @@ public class CanvasManager : MonoBehaviour
         Time.timeScale = 1.0f;
         GameManager.Instance.SwitchState(GameManager.GameState.GAME);
         pauseMenu.SetActive(false);
-    }
-
-    void UpdateScoreText(int value)
-    {
-        scoreText.text = "Score: " + value.ToString();
     }
 
     void Update()

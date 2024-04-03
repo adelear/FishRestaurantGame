@@ -69,7 +69,7 @@ public class FishSpawner : MonoBehaviour
         int milliseconds = (int)((totalTimeElapsed - Mathf.Floor(totalTimeElapsed)) * 1000); 
         string formattedTime = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
 
-        Debug.Log(formattedTime);
+        //Debug.Log(formattedTime);
     }
 
 
@@ -79,7 +79,13 @@ public class FishSpawner : MonoBehaviour
         float totalWeight = 0f;
         for (int i = 0; i < fishPrefabs.Length; i++)
         {
-            totalWeight += (i == 0 ? 2f : 1f); 
+            if (i == 0)
+                totalWeight += 0.6f;
+            else if (i == 1)
+                totalWeight += 0.3f;
+            else
+                totalWeight += 0.1f;
+
             cumulativeWeights[i] = totalWeight;
         }
 
@@ -101,7 +107,6 @@ public class FishSpawner : MonoBehaviour
             currentFishNum++;
         }
     }
-
 
     private void AdjustSpawnInterval()
     {

@@ -142,8 +142,33 @@ public class Fish : Cookables
             Debug.Log("YUMMY"); 
         }
         yield return new WaitForSeconds(3f);
+        GameManager.Instance.ChangeRating(nomNoms.foodQuality); 
         FishSpawner.Instance.currentFishNum--; 
         Destroy(gameObject); 
+    }
+
+    public override void DetermineQuality()
+    {
+        float qualityPercentage = cookingTimer / 5f;
+
+        switch (fishType)
+        {
+            case FishType.Anchovy:  
+                foodQuality = Mathf.Clamp(qualityPercentage * 5f * 0.33f, 0f, 5f);
+                break;
+            case FishType.Tuna:
+                foodQuality = Mathf.Clamp(qualityPercentage * 5f * 0.66f, 0f, 5f);
+                break;
+            case FishType.Salmon:
+                foodQuality = Mathf.Clamp(qualityPercentage * 5f, 0f, 5f);
+                break;
+            default:
+                Debug.LogError("Unhandled fish type!");
+                break;
+        }
+
+        isCooking = false;
+        Debug.Log("Cooking done. Food quality: " + foodQuality);
     }
 
     protected override void Update()

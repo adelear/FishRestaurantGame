@@ -88,7 +88,7 @@ MonoBehaviour:
   isCooking: 0
   foodQuality: 0
   canCook: 0
-  fishType: 0
+  fishType: 1
 --- !u!114 &3791532738876604330
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -75,7 +75,7 @@ public class Cookables : Draggable
         if (isCooking) DetermineQuality();
     }
 
-    public void DetermineQuality()
+    public virtual void DetermineQuality()
     {
         float qualityPercentage = cookingTimer / 5f; 
         foodQuality = Mathf.Clamp(qualityPercentage * 5f, 0f, 5f); 

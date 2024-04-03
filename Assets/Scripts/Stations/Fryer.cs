@@ -6,31 +6,32 @@ public class Fryer : MonoBehaviour
 {
     bool IsSeatEmpty()
     {
-        return GetComponentInChildren<Fish>()? false: true;  
+        bool empty = (GetComponentInChildren<Fish>() ? false : true) || (GetComponentInChildren<Cookables>() ? false : true);
+        return empty; 
     } 
-     
+
     private void OnTriggerEnter(Collider other)
     {
         // Lock Onto Fryer if seat is empty 
-        if (other.gameObject.CompareTag("Fish"))
+        if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty"))
         {
-            Fish fish = other.GetComponent<Fish>();
-            if (!fish.canCook) return; 
+            Cookables cookables = other.GetComponent<Cookables>();
+            if (!cookables.canCook) return;
             if (!IsSeatEmpty())
             {
-                fish.isValidPosition = false;
-                other.transform.position = fish.originalPosition; 
-                return; 
+                cookables.isValidPosition = false;
+                other.transform.position = cookables.originalPosition;
+                return;
             }
             else
             {
                 other.transform.position = transform.position;
-                other.transform.parent = transform; 
-                fish.lockOntoNewPosition = true;
-                if (!fish.isCooking && fish.canCook)
+                other.transform.parent = transform;
+                cookables.lockOntoNewPosition = true;
+                if (!cookables.isCooking && cookables.canCook)
                 {
-                    fish.isSeated = true;
-                    fish.StartCooking();
+                    cookables.isSeated = true;
+                    cookables.StartCooking();
                     Debug.Log("Cooking yippee");
                 }
             }
@@ -40,15 +41,15 @@ public class Fryer : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // Lock Onto Chair
-        if (other.gameObject.CompareTag("Fish"))
+        if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty"))
         {
-            Fish fish = other.GetComponent<Fish>();
-            fish.isValidPosition = true; 
-            fish.lockOntoNewPosition = false;
+            Cookables cookables = other.GetComponent<Cookables>();
+            cookables.isValidPosition = true;
+            cookables.lockOntoNewPosition = false;
 
             if (other.transform.parent == transform)
             {
-                fish.StopCooking();
+                cookables.StopCooking();
                 other.transform.parent = null;
             } 
         }

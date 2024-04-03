@@ -1,5 +1,5 @@
 public enum FishType
 {
-    Anchovie, Tuna, Salmon 
+    Anchovy, Tuna, Salmon 
 }
 

@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patty : MonoBehaviour
+public class Patty : Cookables
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void StartCooking()
     {
-        
+        base.StartCooking();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void DetermineQuality()
     {
-        
+        base.DetermineQuality();
+    }
+
+    protected override void OnMouseDown()
+    {
+        base.OnMouseDown();
+    }
+
+    protected override void OnMouseDrag()
+    {
+        base.OnMouseDrag();
+    }
+
+    protected override void Update()
+    {
+        base.Update(); 
     }
 }

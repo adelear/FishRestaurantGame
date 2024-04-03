@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject HealthImg;
+    [SerializeField] GameObject scoreImg;
     [SerializeField] AudioManager asm; 
     [SerializeField] AudioClip LossSound;
     public static GameManager Instance { get; private set; }
@@ -31,32 +31,59 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public int Score
+    public float AverageRating
     {
-        get => score;
-        set
+        get
         {
-            score = value;
-
-            if (OnScoreValueChanged != null)
-                OnScoreValueChanged.Invoke(score); 
+            if (numberOfRatings == 0)
+                return 0f;
+            else
+                return totalRating / numberOfRatings;
         }
     }
-    private int score = 0;
-    public UnityEvent<int> OnScoreValueChanged;
 
-    /*
-    public void DecreaseHealthBar()
+    private float totalRating = 0;
+    private int numberOfRatings = 0;
+    public UnityEvent<float> OnAverageRatingChanged;
+
+    public void ChangeRating(float newRating)
     {
-        if (HealthImg != null)
+        float previousAverageRating = AverageRating; // Store the previous average rating
+
+        totalRating += newRating;
+        numberOfRatings++;
+
+        if (OnAverageRatingChanged != null)
         {
-            RectTransform healthRectTransform = HealthImg.GetComponent<RectTransform>();
-            healthRectTransform.sizeDelta -= new Vector2(10f, 0f); 
+            OnAverageRatingChanged.Invoke(AverageRating);
+            Debug.Log("New Average Rating: " + AverageRating);
+
+            // Calculate the change in average rating
+            float ratingChange = AverageRating - previousAverageRating;
+            ChangeRatingBar(ratingChange); 
         }
     }
-    */ 
 
-    IEnumerator DelayedGameOver(float delay)
+    public void ChangeRatingBar(float changeAmount)
+    {
+        if (scoreImg == null) return;
+        float starWidth = 100f;
+        float totalWidth = starWidth * 5; 
+
+        // Calculate the change in width for the rating bar
+        float widthChange = totalWidth * (changeAmount / 5f); 
+        RectTransform starRectTransform = scoreImg.GetComponent<RectTransform>();
+        starRectTransform.sizeDelta += new Vector2(widthChange, 0f);
+    }
+
+
+    public void ResetRating()
+    {
+        totalRating = 0;
+        numberOfRatings = 0;
+    }
+
+    IEnumerator DelayedGameOver(float delay) 
     {
         yield return new WaitForSeconds(delay);
         GameOver();
@@ -72,7 +99,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("MainMenu");
-                Score = 0;
+                ResetRating(); 
             }
     }
 
