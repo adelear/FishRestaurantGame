@@ -27,16 +27,17 @@ public class Cookables : Draggable
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
-        isBeingDragged = true; 
     }
 
     protected override void OnMouseDrag() 
     {
         if (!lockOntoNewPosition) base.OnMouseDrag();
         else StartCoroutine(AllowDrag());
+
+        isBeingDragged = true; 
     }
 
-    protected virtual void OnMouseUp() 
+    protected void OnMouseUp() 
     {
         if (!isValidPosition) transform.position = originalPosition;
         isBeingDragged = false; 
@@ -51,7 +52,7 @@ public class Cookables : Draggable
     // When cooking start a timer: less than 4 is undercooked, 4-5 is just right, more than 5 is overcooked 
     // Undercooked, just right and overcooked affects the quality of the cookable
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isCooking)
         {
@@ -60,7 +61,7 @@ public class Cookables : Draggable
         }
     }
 
-    public void StartCooking()
+    public virtual void StartCooking()
     {
         if (!isCooking && canCook)
         {
