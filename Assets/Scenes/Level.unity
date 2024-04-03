@@ -512,6 +512,7 @@ MonoBehaviour:
   isCooking: 0
   foodQuality: 0
   canCook: 0
+  sr: {fileID: 0}
 --- !u!65 &409078493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -855,6 +856,11 @@ MonoBehaviour:
   - {fileID: 851026304}
   leftButton: {fileID: 650500309}
   rightButton: {fileID: 1076773444}
+--- !u!212 &552438837 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4143626445577892438, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
+  m_PrefabInstance: {fileID: 5570830576896519640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &568492124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2060,7 @@ MonoBehaviour:
   isCooking: 0
   foodQuality: 0
   canCook: 0
+  sr: {fileID: 0}
 --- !u!65 &1513587628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2250,10 +2257,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8971503735063356152, guid: f7936391c2fef23438d6618b8eda550c, type: 3}
   m_PrefabInstance: {fileID: 7140379812490621101}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1648208511 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3000188657300364211, guid: a54bca9220ccbcf41bdffdaade4a1724, type: 3}
+  m_PrefabInstance: {fileID: 2150489760394421382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1686094665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7899102919224671096, guid: 1733ab16529b0d742a8f7f637920c669, type: 3}
   m_PrefabInstance: {fileID: 7018698393972600772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1709321102 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7815323714987807753, guid: 08fa1ce09503a9047872337e006fa8b7, type: 3}
+  m_PrefabInstance: {fileID: 8365904283446243472}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1754101891
 GameObject:
@@ -2447,6 +2464,7 @@ MonoBehaviour:
   isCooking: 0
   foodQuality: 0
   canCook: 0
+  sr: {fileID: 0}
 --- !u!65 &1774193444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2715,6 +2733,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fryer
       objectReference: {fileID: 0}
+    - target: {fileID: 5555271750838000777, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555271750838000777, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2728,6 +2754,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 679425284372403928, guid: a54bca9220ccbcf41bdffdaade4a1724, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 1648208511}
+    - target: {fileID: 1204797119897266856, guid: a54bca9220ccbcf41bdffdaade4a1724, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3170797722548219596, guid: a54bca9220ccbcf41bdffdaade4a1724, type: 3}
       propertyPath: m_Name
       value: Anchovy
@@ -3178,7 +3212,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2236998487307665030, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
       propertyPath: m_Name
-      value: Salmon
+      value: Tuna
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747289720379486883, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 552438837}
+    - target: {fileID: 2747289720379486883, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
+      propertyPath: fishType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649026930968623300, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3570,9 +3616,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1734385758442647924, guid: 08fa1ce09503a9047872337e006fa8b7, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 1709321102}
+    - target: {fileID: 1734385758442647924, guid: 08fa1ce09503a9047872337e006fa8b7, type: 3}
+      propertyPath: fishType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3484626780784849635, guid: 08fa1ce09503a9047872337e006fa8b7, type: 3}
       propertyPath: m_Name
-      value: Tuna
+      value: Salmon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702282507835954855, guid: 08fa1ce09503a9047872337e006fa8b7, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8796231847076544096, guid: 08fa1ce09503a9047872337e006fa8b7, type: 3}
       propertyPath: m_LocalPosition.x

@@ -55,7 +55,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -88,6 +88,7 @@ MonoBehaviour:
   isCooking: 0
   foodQuality: 0
   canCook: 0
+  sr: {fileID: 4143626445577892438}
   fishType: 2
 --- !u!114 &743631153426699470
 MonoBehaviour:
@@ -143,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -79633830, guid: 96c16004b83fe2f4185d9b1a28a29332, type: 3}
+  m_Sprite: {fileID: -1823814426, guid: 96c16004b83fe2f4185d9b1a28a29332, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

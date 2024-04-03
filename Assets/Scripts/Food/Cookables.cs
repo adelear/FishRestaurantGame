@@ -15,7 +15,9 @@ public class Cookables : Draggable
     public float cookingTimer = 0f; 
     public bool isCooking = false;
     public float foodQuality = 0f;
-    public bool canCook; 
+    public bool canCook;
+
+    [SerializeField] private SpriteRenderer sr; 
 
     protected virtual void Start()
     {
@@ -34,12 +36,16 @@ public class Cookables : Draggable
         if (!lockOntoNewPosition) base.OnMouseDrag();
         else StartCoroutine(AllowDrag());
 
+        if (!isValidPosition) SetSpriteTransparency(0.5f);
+        else SetSpriteTransparency(1f);
+        
         isBeingDragged = true; 
     }
 
     protected void OnMouseUp() 
     {
         if (!isValidPosition) transform.position = originalPosition;
+        SetSpriteTransparency(1f); 
         isBeingDragged = false; 
     }
 
@@ -81,5 +87,13 @@ public class Cookables : Draggable
         foodQuality = Mathf.Clamp(qualityPercentage * 5f, 0f, 5f); 
         isCooking = false;
         Debug.Log("Cooking done. Food quality: " + foodQuality); 
+    }
+
+    private void SetSpriteTransparency(float alpha)
+    {
+        if (sr == null) return;
+        Color color = sr.color;
+        color.a = alpha;
+        sr.color = color;
     }
 }

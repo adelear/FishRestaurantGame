@@ -55,7 +55,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -88,6 +88,7 @@ MonoBehaviour:
   isCooking: 0
   foodQuality: 0
   canCook: 0
+  sr: {fileID: 3000188657300364211}
   fishType: 0
 --- !u!114 &1468681459038273679
 MonoBehaviour:

@@ -64,17 +64,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private float ratingChangeSpeed = 0.5f; 
+
+    private bool isLerping = false;
+    private float targetWidthChange = 0f;
+
     public void ChangeRatingBar(float changeAmount)
     {
         if (scoreImg == null) return;
         float starWidth = 100f;
-        float totalWidth = starWidth * 5; 
-
-        // Calculate the change in width for the rating bar
-        float widthChange = totalWidth * (changeAmount / 5f); 
-        RectTransform starRectTransform = scoreImg.GetComponent<RectTransform>();
-        starRectTransform.sizeDelta += new Vector2(widthChange, 0f);
+        float totalWidth = starWidth * 5;
+        float widthChange = totalWidth * (changeAmount / 5f);
+        float newWidth = scoreImg.GetComponent<RectTransform>().sizeDelta.x + widthChange;
+        targetWidthChange = newWidth - scoreImg.GetComponent<RectTransform>().sizeDelta.x;
+        if (!isLerping) StartCoroutine(LerpRatingBar());
     }
+
+    private IEnumerator LerpRatingBar()
+    {
+        isLerping = true;
+        float elapsedTime = 0f;
+        float startWidth = scoreImg.GetComponent<RectTransform>().sizeDelta.x;
+
+        while (elapsedTime < ratingChangeSpeed)
+        {
+            float width = Mathf.Lerp(startWidth, startWidth + targetWidthChange, elapsedTime / ratingChangeSpeed);
+            scoreImg.GetComponent<RectTransform>().sizeDelta = new Vector2(width, scoreImg.GetComponent<RectTransform>().sizeDelta.y);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        scoreImg.GetComponent<RectTransform>().sizeDelta = new Vector2(startWidth + targetWidthChange, scoreImg.GetComponent<RectTransform>().sizeDelta.y);
+
+        isLerping = false;
+    }
+
 
 
     public void ResetRating()
