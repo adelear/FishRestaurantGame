@@ -17,10 +17,10 @@ public class FishSpawner : MonoBehaviour
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
 
-    float minXBound = -11.55f; 
-    float maxXBound = 7.86f;
-    float minZBound = 1.48f;
-    float maxZBound = 7.14f;
+    float minXBound = -14.2f; 
+    float maxXBound = 7.2f;
+    float minZBound = -0.5f;
+    float maxZBound = 13f;
 
     public static FishSpawner Instance { get; private set; }
 

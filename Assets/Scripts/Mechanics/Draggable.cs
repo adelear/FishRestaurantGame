@@ -7,8 +7,8 @@ public class Draggable : MonoBehaviour
     public LayerMask draggableLayer; 
     Vector3 mousePosition;
     public float zOffsetFactor = 0.01f;
-    float maxZPos = 3f;
-    float minZPos = -2f;
+    float maxZPos = 13f;
+    float minZPos = -0.5f;
 
     private Vector3 GetMouseWorldPosition()
     {
