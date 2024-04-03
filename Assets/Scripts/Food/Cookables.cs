@@ -51,7 +51,7 @@ public class Cookables : Draggable
 
     IEnumerator AllowDrag()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         lockOntoNewPosition = false;
     }
 

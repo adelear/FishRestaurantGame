@@ -109,7 +109,8 @@ public class Fish : Cookables
 
     private void LeavingHangry()
     {
-        FishSpawner.Instance.currentFishNum--; 
+        FishSpawner.Instance.currentFishNum--;
+        GameManager.Instance.ChangeRating(1f); 
         Destroy(gameObject); 
     }
 
@@ -169,6 +170,11 @@ public class Fish : Cookables
 
         isCooking = false;
         Debug.Log("Cooking done. Food quality: " + foodQuality);
+    }
+
+    protected override void OnMouseDrag()
+    {
+        if (CurrentState != FishStates.Served) base.OnMouseDrag();
     }
 
     protected override void Update()

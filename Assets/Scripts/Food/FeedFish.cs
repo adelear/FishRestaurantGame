@@ -7,7 +7,7 @@ public class FeedFish : MonoBehaviour
     // Raycast behind it checking for a Fish compare tag 
     // If there is a fish behind it, even if its not hungry, bring the z value closer to the fish
     //if there is a fish behind it that is hungry, change fish state to Served and destroy object
-    [SerializeField] private float raycastDistance = 10f;
+    private float raycastDistance = 15f;
 
     private void Update()
     {
@@ -25,6 +25,7 @@ public class FeedFish : MonoBehaviour
             transform.position = newPos;
 
             if (fish.CurrentState != FishStates.Hungry) return;
+            if (fish.isBeingDragged) return; 
             fish.ChangeState(FishStates.Served);
             fish.Served(gameObject); 
             Destroy(gameObject);

@@ -103,10 +103,21 @@ public class FishSpawner : MonoBehaviour
         if (selectedPrefab != null)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
+            Collider[] colliders = Physics.OverlapSphere(spawnPosition, 1f);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("Table"))
+                {
+                    spawnPosition = GetRandomSpawnPosition();
+                    break;
+                }
+            }
+
             Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
             currentFishNum++;
         }
     }
+
 
     private void AdjustSpawnInterval()
     {

@@ -28,4 +28,13 @@ public class Patty : Cookables
     {
         base.Update(); 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Fish"))
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null) rb.velocity = Vector3.zero;
+        }
+    } 
 }

@@ -48,5 +48,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  leftButton: {fileID: 0}
-  rightButton: {fileID: 0}
+  leftButton: {fileID: 3212069184536874441, guid: aee469e56da41bd45bfed0a0e086917b, type: 3}
+  rightButton: {fileID: 6765951510465053468, guid: c4197c18cc989e44099c20a99cb3e26c, type: 3}
