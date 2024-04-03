@@ -10,6 +10,7 @@ public class Fish : Cookables
 {
     public event Action<FishStates> OnStateChanged;
     private FishStates currentState;
+    public FishType fishType;  
 
     // Enters the restaurant chilling
     // From chilling, a coroutine starts that makes it randomly get hungry from 15s of entering to a minute 

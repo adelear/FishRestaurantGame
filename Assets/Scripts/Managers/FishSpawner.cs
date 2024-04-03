@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
 {
-    public GameObject fishPrefab;
+    public GameObject[] fishPrefabs;
     private float initialSpawnIntervalMin = 5f;
     private float initialSpawnIntervalMax = 15f;
     private float additionalSpawnIntervalMin = 1f;
@@ -75,10 +75,33 @@ public class FishSpawner : MonoBehaviour
 
     private void SpawnFish()
     {
-        Vector3 spawnPosition = GetRandomSpawnPosition();
-        Instantiate(fishPrefab, spawnPosition, Quaternion.identity);
-        currentFishNum++;
+        float[] cumulativeWeights = new float[fishPrefabs.Length];
+        float totalWeight = 0f;
+        for (int i = 0; i < fishPrefabs.Length; i++)
+        {
+            totalWeight += (i == 0 ? 2f : 1f); 
+            cumulativeWeights[i] = totalWeight;
+        }
+
+        float randomValue = Random.Range(0f, totalWeight);
+        GameObject selectedPrefab = null;
+        for (int i = 0; i < fishPrefabs.Length; i++)
+        {
+            if (randomValue <= cumulativeWeights[i])
+            {
+                selectedPrefab = fishPrefabs[i];
+                break;
+            }
+        }
+
+        if (selectedPrefab != null)
+        {
+            Vector3 spawnPosition = GetRandomSpawnPosition();
+            Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
+            currentFishNum++;
+        }
     }
+
 
     private void AdjustSpawnInterval()
     {
