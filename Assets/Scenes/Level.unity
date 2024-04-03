@@ -2711,29 +2711,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3379783130164896065, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.09
-      objectReference: {fileID: 0}
     - target: {fileID: 4436328911075190043, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
       propertyPath: m_Name
       value: Fryer
       objectReference: {fileID: 0}
-    - target: {fileID: 6317741931015737976, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
-      propertyPath: m_Size.x
-      value: 0.21869278
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317741931015737976, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
-      propertyPath: m_Center.x
-      value: -0.018053055
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317741931015737976, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
-      propertyPath: m_Center.z
-      value: 2.4120655
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7386420503647009193, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad9b511424a5294db0be7a2d3955c54, type: 3}
@@ -3468,6 +3451,10 @@ PrefabInstance:
     - target: {fileID: 685947905284086819, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
       propertyPath: m_Name
       value: Seat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567639651854799359, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3002223476650592551, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
       propertyPath: m_LocalPosition.x
