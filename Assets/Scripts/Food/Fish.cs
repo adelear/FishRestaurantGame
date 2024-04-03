@@ -19,8 +19,8 @@ public class Fish : Cookables
 
     private Coroutine hungerCoroutine; // coroutine before they get hungry 
     private Coroutine feedingTimeCoroutine; //coroutine that starts where they must be fed before leaving
-    private float feedingDuration = 10f;
-    private float remainingFeedingTime = 10f; 
+    private float feedingDuration = 60f;
+    private float remainingFeedingTime = 60f; 
     public FishStates CurrentState
     {
         get { return currentState; }
@@ -93,7 +93,7 @@ public class Fish : Cookables
         {
             yield return null;
             remainingFeedingTime -= Time.deltaTime;
-            Debug.Log("Time Left: " + remainingFeedingTime);
+            //Debug.Log("Time Left: " + remainingFeedingTime);
         }
         // If not fed within the feeding duration, leave hangry
         CurrentState = FishStates.LeavingHangry;
@@ -108,6 +108,7 @@ public class Fish : Cookables
 
     private void LeavingHangry()
     {
+        FishSpawner.Instance.currentFishNum--; 
         Destroy(gameObject); 
     }
 
@@ -140,6 +141,7 @@ public class Fish : Cookables
             Debug.Log("YUMMY"); 
         }
         yield return new WaitForSeconds(3f);
+        FishSpawner.Instance.currentFishNum--; 
         Destroy(gameObject); 
     }
 

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2466399215911921392}
   - component: {fileID: 2414414888700433216}
   - component: {fileID: 7234041736824163387}
-  m_Layer: 0
+  - component: {fileID: 1534138456655092650}
+  m_Layer: 3
   m_Name: Fish
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -146,8 +147,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d810c7587088f4e85d8a3966aa4fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  draggableLayer:
+    serializedVersion: 2
+    m_Bits: 8
   zOffsetFactor: 0.01
-  fishType: 0
+  isSeated: 0
+  isBeingDragged: 0
   originalPosition: {x: 0, y: 0, z: 0}
   lockOntoNewPosition: 0
   isValidPosition: 0
+  cookingTimer: 0
+  isCooking: 0
+  foodQuality: 0
+  canCook: 0
+--- !u!114 &1534138456655092650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039062965754606467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 10
