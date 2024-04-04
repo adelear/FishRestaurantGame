@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9117451610937582125}
   - component: {fileID: 1204797119897266856}
-  - component: {fileID: 679425284372403928}
-  - component: {fileID: 1468681459038273679}
   - component: {fileID: 3000188657300364211}
   - component: {fileID: 7761858153240533329}
+  - component: {fileID: -7308297844482747281}
+  - component: {fileID: 7443714277157059482}
+  - component: {fileID: 6266299257356798295}
   m_Layer: 3
   m_Name: Anchovy
   m_TagString: Fish
@@ -63,46 +64,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &679425284372403928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170797722548219596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d810c7587088f4e85d8a3966aa4fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  draggableLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  zOffsetFactor: 0.01
-  isSeated: 0
-  isBeingDragged: 0
-  originalPosition: {x: 0, y: 0, z: 0}
-  lockOntoNewPosition: 0
-  isValidPosition: 0
-  cookingTimer: 0
-  isCooking: 0
-  foodQuality: 0
-  canCook: 0
-  sr: {fileID: 3000188657300364211}
-  fishType: 0
---- !u!114 &1468681459038273679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170797722548219596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastDistance: 10
 --- !u!212 &3000188657300364211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +129,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -178,3 +139,66 @@ CapsuleCollider:
   m_Height: 3.715
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.17835504}
+--- !u!95 &-7308297844482747281
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170797722548219596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01d320510428e2c45b01651f06e76163, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7443714277157059482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170797722548219596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d810c7587088f4e85d8a3966aa4fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggableLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  isSeated: 0
+  isBeingDragged: 0
+  originalPosition: {x: 0, y: 0, z: 0}
+  lockOntoNewPosition: 0
+  isValidPosition: 0
+  cookingTimer: 0
+  isCooking: 0
+  foodQuality: 0
+  canCook: 0
+  sr: {fileID: 3000188657300364211}
+  fishType: 0
+  idleAnim: AnchovyIdle
+  hungryAnim: AnchovyHungry
+  flailAnim: AnchovyFlail
+  angryAnim: AnchovyAngry
+--- !u!114 &6266299257356798295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170797722548219596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

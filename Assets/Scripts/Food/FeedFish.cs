@@ -4,32 +4,48 @@ using UnityEngine;
 
 public class FeedFish : MonoBehaviour
 {
-    // Raycast behind it checking for a Fish compare tag 
-    // If there is a fish behind it, even if its not hungry, bring the z value closer to the fish
-    //if there is a fish behind it that is hungry, change fish state to Served and destroy object
-    private float raycastDistance = 15f;
+    private float spherecastRadius = 2f;
+    private float spherecastDistance = 2f;
 
     private void Update()
     {
-        // Cast a ray backward from the object's position
+        // Cast a sphere forward from the object's position
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+        if (Physics.SphereCast(transform.position, spherecastRadius, transform.forward, out hit, spherecastDistance))
         {
-            if (!hit.collider.CompareTag("Fish")) return;
-            if (GetComponent<Cookables>().canCook || GetComponent<Cookables>().isBeingDragged) return; 
-            Fish fish = hit.collider.GetComponent<Fish>();
-            if (fish == null) return;
-            // Movinf object's z value closer to the fish
-            Vector3 newPos = transform.position;
-            newPos.z = hit.collider.transform.position.z - 2f;
-            transform.position = newPos;
+            DebugDrawSphereCast(transform.position, transform.forward, hit.distance, spherecastRadius, Color.red); 
+            if (hit.collider.CompareTag("Fish"))
+            {
+                Cookables cookables = GetComponent<Cookables>();
+                if (cookables != null) if (cookables.canCook) return;
+                Fish fish = hit.collider.GetComponent<Fish>();
+                if (fish != null && fish.CurrentState == FishStates.Hungry ) 
+                {
+                    // Move the object's z value closer to the fish
+                    Vector3 newPos = transform.position;
+                    newPos.z = hit.collider.transform.position.z - 2f;
+                    transform.position = newPos;
 
-            if (fish.CurrentState != FishStates.Hungry) return;
-            if (fish.isBeingDragged) return; 
-            fish.ChangeState(FishStates.Served);
-            fish.Served(gameObject); 
-            Destroy(gameObject);
+                    fish.ChangeState(FishStates.Served);
+                    fish.Served(gameObject);
+                    Destroy(gameObject);
+                }
+            }
         }
-        Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red); 
     }
+
+    private void DebugDrawSphereCast(Vector3 origin, Vector3 direction, float distance, float radius, Color color)
+    {
+        Vector3 end = origin + direction * distance;
+        Debug.DrawLine(origin - Vector3.right * radius, end - Vector3.right * radius, color);
+        Debug.DrawLine(origin + Vector3.right * radius, end + Vector3.right * radius, color);
+        Debug.DrawLine(origin - Vector3.up * radius, end - Vector3.up * radius, color);
+        Debug.DrawLine(origin + Vector3.up * radius, end + Vector3.up * radius, color);
+        Debug.DrawLine(origin - Vector3.forward * radius, end - Vector3.forward * radius, color);
+        Debug.DrawLine(origin + Vector3.forward * radius, end + Vector3.forward * radius, color);
+
+        Debug.DrawLine(end - Vector3.right * radius, end + Vector3.right * radius, color);
+        Debug.DrawLine(end - Vector3.up * radius, end + Vector3.up * radius, color);
+        Debug.DrawLine(end - Vector3.forward * radius, end + Vector3.forward * radius, color);
+    } 
 }

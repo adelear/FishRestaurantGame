@@ -8,7 +8,7 @@ public class FishSpawner : MonoBehaviour
     private float initialSpawnIntervalMax = 15f;
     private float additionalSpawnIntervalMin = 1f;
     private float additionalSpawnIntervalMax = 8f;
-    private int maxFishNum = 50;
+    private int maxFishNum = 40;
     public int currentFishNum = 0;
     private float spawnTimer = 0f;
     private float totalTimeElapsed = 0f;

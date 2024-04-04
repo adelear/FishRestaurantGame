@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8796231847076544096}
   - component: {fileID: 4702282507835954855}
   - component: {fileID: 1734385758442647924}
-  - component: {fileID: 3791532738876604330}
   - component: {fileID: 7815323714987807753}
   - component: {fileID: 8057763821854831449}
+  - component: {fileID: 2022379161224766689}
+  - component: {fileID: 2863723831185976238}
   m_Layer: 3
   m_Name: Tuna
   m_TagString: Fish
@@ -78,7 +79,6 @@ MonoBehaviour:
   draggableLayer:
     serializedVersion: 2
     m_Bits: 8
-  zOffsetFactor: 0.01
   isSeated: 0
   isBeingDragged: 0
   originalPosition: {x: 0, y: 0, z: 0}
@@ -90,19 +90,10 @@ MonoBehaviour:
   canCook: 0
   sr: {fileID: 7815323714987807753}
   fishType: 1
---- !u!114 &3791532738876604330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3484626780784849635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastDistance: 10
+  idleAnim: TunaIdle
+  hungryAnim: TunaHungry
+  flailAnim: TunaFlail
+  angryAnim: TunaAngry
 --- !u!212 &7815323714987807753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +159,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -178,3 +169,36 @@ CapsuleCollider:
   m_Height: 5.1854134
   m_Direction: 1
   m_Center: {x: 0, y: -0.15270662, z: 0.18604994}
+--- !u!95 &2022379161224766689
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484626780784849635}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 747352abaf2efec41ac214cbeca23e1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2863723831185976238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484626780784849635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

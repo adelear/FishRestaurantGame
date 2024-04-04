@@ -9,8 +9,16 @@ using UnityEngine.UIElements;
 public class Fish : Cookables
 {
     public event Action<FishStates> OnStateChanged;
+    [Header("Fish Components")] 
     private FishStates currentState;
-    public FishType fishType;  
+    public FishType fishType;
+
+    [Header("Animations")]
+    private Animator anim;
+    public string idleAnim;
+    public string hungryAnim;
+    public string flailAnim;
+    public string angryAnim; 
 
     // Enters the restaurant chilling
     // From chilling, a coroutine starts that makes it randomly get hungry from 15s of entering to a minute 
@@ -60,6 +68,7 @@ public class Fish : Cookables
     protected override void Start()
     {
         base.Start();
+        anim = GetComponent<Animator>(); 
         isSeated = false;
         CurrentState = FishStates.Chilling;
         StartChilling(); 
@@ -72,6 +81,7 @@ public class Fish : Cookables
 
     private void StartChilling()
     {
+        anim.Play(idleAnim); 
         hungerCoroutine = StartCoroutine(HungerCoroutine()); 
     }
 
@@ -84,7 +94,7 @@ public class Fish : Cookables
 
     private void Hungry()
     {
-        remainingFeedingTime = feedingDuration; 
+        anim.Play(hungryAnim); 
         feedingTimeCoroutine = StartCoroutine(FeedingTimer());
     }
 
@@ -109,9 +119,16 @@ public class Fish : Cookables
 
     private void LeavingHangry()
     {
+        anim.Play(angryAnim); 
+        StartCoroutine(HangryCoroutine()); 
+    }
+
+    IEnumerator HangryCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
         FishSpawner.Instance.currentFishNum--;
-        GameManager.Instance.ChangeRating(1f); 
-        Destroy(gameObject); 
+        GameManager.Instance.ChangeRating(1f);
+        Destroy(gameObject);
     }
 
     public override void StartCooking()
@@ -128,24 +145,26 @@ public class Fish : Cookables
 
     IEnumerator JudgementTime(Cookables nomNoms)
     {
-        yield return new WaitForSeconds(3f); 
-
-        if (nomNoms.foodQuality < 2)
-        {
-            Debug.Log("REVIEW: FOOD IS SHIT"); 
-        }
-        else if (nomNoms.foodQuality >= 2 && nomNoms.foodQuality < 4)
-        {
-            Debug.Log("HMM.... OKAY I GUESS"); 
-        }
-        else
-        {
-            Debug.Log("YUMMY"); 
-        }
         yield return new WaitForSeconds(3f);
-        GameManager.Instance.ChangeRating(nomNoms.foodQuality); 
-        FishSpawner.Instance.currentFishNum--; 
-        Destroy(gameObject); 
+        if (nomNoms != null)
+        {
+            if (nomNoms.foodQuality < 2)
+            {
+                Debug.Log("REVIEW: FOOD IS SHIT");
+            }
+            else if (nomNoms.foodQuality >= 2 && nomNoms.foodQuality < 4)
+            {
+                Debug.Log("HMM.... OKAY I GUESS");
+            }
+            else
+            {
+                Debug.Log("YUMMY");
+            }
+            yield return new WaitForSeconds(3f);
+            GameManager.Instance.ChangeRating(nomNoms.foodQuality);
+            FishSpawner.Instance.currentFishNum--;
+            Destroy(gameObject);
+        } 
     }
 
     public override void DetermineQuality()
@@ -179,13 +198,17 @@ public class Fish : Cookables
 
     protected override void Update()
     {
-        base.Update(); 
-        if (CurrentState != FishStates.Hungry) return;
-
+        base.Update();
+        if (isBeingDragged) anim.Play(flailAnim);
+        else if (CurrentState != FishStates.Hungry && CurrentState != FishStates.LeavingHangry)
+        {
+            anim.Play(idleAnim);
+            return; 
+        }
         if (isBeingDragged)
         {
             // Animation plays
-            // Pause the feeding timer
+            // Pause the feeding timer 
             if (feedingTimeCoroutine != null)
             {
                 StopCoroutine(feedingTimeCoroutine);
@@ -194,7 +217,10 @@ public class Fish : Cookables
         }
         else if (remainingFeedingTime > 0f) // Resume the feeding timer if it's not yet completed
         {
-            if (feedingTimeCoroutine == null) feedingTimeCoroutine = StartCoroutine(FeedingTimer());
+            if (feedingTimeCoroutine == null)
+            {
+                Hungry(); 
+            }
         }
     }
 
