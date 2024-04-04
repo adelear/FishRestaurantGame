@@ -46,12 +46,18 @@ public class CameraChangeManager : MonoBehaviour
 
     private void SwitchRoom(int targetRoom)
     {
+        if (GameManager.Instance.GetGameState() != GameManager.GameState.GAME) return; 
         if (!canSwitchCamera || targetRoom < 0 || targetRoom >= cameras.Length)
             return;
 
         Camera.main.transform.position = cameras[targetRoom].position;
         currentRoom = targetRoom;
         canSwitchCamera = false;
+
+        Vector3 mousePosition = Input.mousePosition;
+
+        if (targetRoom > currentRoom) mousePosition.x = Screen.width * 0.1f;
+        else mousePosition.x = Screen.width * 0.9f; 
         
         switch (currentRoom)
         {

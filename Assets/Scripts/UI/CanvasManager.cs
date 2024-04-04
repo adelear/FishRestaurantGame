@@ -111,6 +111,7 @@ public class CanvasManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.GetGameState() == GameManager.GameState.DEFEAT) return; 
         if (!pauseMenu) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))

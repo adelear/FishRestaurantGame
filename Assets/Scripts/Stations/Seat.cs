@@ -15,6 +15,7 @@ public class Seat : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             Fish fish = other.GetComponent<Fish>();
+            if (fish == null) return; 
             if (!fish.canCook) return; 
             if (!IsSeatEmpty())
             {
@@ -38,6 +39,7 @@ public class Seat : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             Fish fish = other.GetComponent<Fish>();
+            if (fish == null) return; 
             fish.isValidPosition = true; 
             fish.lockOntoNewPosition = false;
             fish.isSeated = false; 

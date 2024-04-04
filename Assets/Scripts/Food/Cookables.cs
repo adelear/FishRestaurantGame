@@ -72,11 +72,11 @@ public class Cookables : Draggable
         if (!isCooking && canCook)
         {
             isCooking = true;
-            canCook = false; 
+            canCook = false;
         }
     }
 
-    public void StopCooking()
+    public virtual void StopCooking()
     {
         if (isCooking) DetermineQuality();
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class FishSpawner : MonoBehaviour
 {
     public GameObject[] fishPrefabs;
+    public GameObject[] endingDialogues; // 1 to 5, 0-1 is Worse, 1-2 is Bad, 2-3 is Average, 3-4 is Good, 4-5 is Best
     private float initialSpawnIntervalMin = 5f;
     private float initialSpawnIntervalMax = 15f;
     private float additionalSpawnIntervalMin = 1f;
@@ -13,6 +14,7 @@ public class FishSpawner : MonoBehaviour
     private float spawnTimer = 0f;
     private float totalTimeElapsed = 0f;
     private float currentSpawnInterval;
+    private float gameTime = 600f; 
 
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
@@ -44,32 +46,62 @@ public class FishSpawner : MonoBehaviour
 
     private void Update()
     {
-        // if (GameManager.Instance.GetGameState() != GameManager.GameState.GAME) return; 
-        totalTimeElapsed += Time.deltaTime;
-
-        if (currentFishNum < maxFishNum)
+        if (GameManager.Instance.GetGameState() != GameManager.GameState.GAME) return;
+        if (totalTimeElapsed <= gameTime)
         {
-            spawnTimer += Time.deltaTime;
+            totalTimeElapsed += Time.deltaTime;
 
-            if (spawnTimer >= currentSpawnInterval)
+            if (currentFishNum < maxFishNum)
             {
-                SpawnFish();
-                spawnTimer = 0f;
+                spawnTimer += Time.deltaTime;
+
+                if (spawnTimer >= currentSpawnInterval)
+                {
+                    SpawnFish();
+                    spawnTimer = 0f;
+                }
+
+                if (totalTimeElapsed >= 240f && currentSpawnInterval != additionalSpawnIntervalMax)
+                {
+                    AdjustSpawnInterval();
+                }
             }
+            // Format the total time elapsed into minutes, seconds, and milliseconds
+            int minutes = (int)(totalTimeElapsed / 60);
+            int seconds = (int)(totalTimeElapsed % 60);
+            int milliseconds = (int)((totalTimeElapsed - Mathf.Floor(totalTimeElapsed)) * 1000);
+            string formattedTime = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
 
-            if (totalTimeElapsed >= 240f && currentSpawnInterval != additionalSpawnIntervalMax)
+            //Debug.Log(formattedTime); 
+        }
+        if (totalTimeElapsed >= gameTime)
+        {
+            GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
+            foreach (GameObject fish in fishes) Destroy(fish);
+                
+            float averageRating = GameManager.Instance.AverageRating;
+
+            if (averageRating >= 0f && averageRating < 1f)
             {
-                AdjustSpawnInterval();
+                endingDialogues[0].SetActive(true); 
+            }
+            else if (averageRating >= 1f && averageRating < 2f)
+            {
+                endingDialogues[1].SetActive(true); 
+            }
+            else if (averageRating >= 2f && averageRating < 3f)
+            {
+                endingDialogues[2].SetActive(true); 
+            }
+            else if (averageRating >= 3f && averageRating <= 4f)
+            {
+                endingDialogues[3].SetActive(true); 
+            }
+            else if (averageRating >= 4f && averageRating <= 5f)
+            {
+                endingDialogues[4].SetActive(true);
             }
         }
-
-        // Format the total time elapsed into minutes, seconds, and milliseconds
-        int minutes = (int)(totalTimeElapsed / 60);
-        int seconds = (int)(totalTimeElapsed % 60);
-        int milliseconds = (int)((totalTimeElapsed - Mathf.Floor(totalTimeElapsed)) * 1000); 
-        string formattedTime = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
-
-        //Debug.Log(formattedTime);
     }
 
 

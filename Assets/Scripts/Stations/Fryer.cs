@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Fryer : MonoBehaviour
 {
+    [SerializeField] ParticleSystem steam; 
     bool IsSeatEmpty()
     {
-        if (GetComponentInChildren<Fish>() || GetComponentInChildren<Cookables>()) return false;
+        if (GetComponentInChildren<Cookables>()) return false;
         else return true; 
     } 
 
@@ -33,6 +34,7 @@ public class Fryer : MonoBehaviour
                 {
                     cookables.isSeated = true;
                     cookables.StartCooking();
+                    steam.Play(); 
                     Debug.Log("Cooking yippee");
                 }
             }
@@ -47,11 +49,12 @@ public class Fryer : MonoBehaviour
 
             // If the exiting cookable is the one currently cooking in the fryer,
             // don't remove it from the parent and stop cooking
-            if (cookables.isSeated && cookables.isCooking && other.transform.IsChildOf(transform))
+            if (cookables.isSeated && cookables.isCooking)
             {
                 cookables.isValidPosition = true;
                 cookables.lockOntoNewPosition = false;
-                cookables.StopCooking(); 
+                cookables.StopCooking();
+                cookables.transform.parent = null; 
             }
             else 
             {
