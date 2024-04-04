@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 605263255}
-  m_IndirectSpecularColor: {r: 0.18367435, g: 0.22800925, b: 0.2985205, a: 1}
+  m_IndirectSpecularColor: {r: 0.18367459, g: 0.22800955, b: 0.2985212, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 919132149155446097, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
       propertyPath: m_Name
       value: SM_FreezerBox_AC
@@ -1000,7 +1004,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 32f3452be78087842a1397efa4800ec8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff7730250046f8141a8557f8f5b08837, type: 2}
+      objectReference: {fileID: 2100000, guid: ce4c0344ce96e014e959d152a7f534c5, type: 2}
     - target: {fileID: 919132149155446097, guid: 32f3452be78087842a1397efa4800ec8, type: 3}
       propertyPath: m_Name
       value: SM_Floor_AC
@@ -1167,6 +1171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 605263256}
   - component: {fileID: 605263255}
+  - component: {fileID: 605263257}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1251,6 +1256,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -205.363, y: -30, z: 0}
+--- !u!114 &605263257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605263254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &621180406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1302,7 +1330,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 32f3452be78087842a1397efa4800ec8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff7730250046f8141a8557f8f5b08837, type: 2}
+      objectReference: {fileID: 2100000, guid: ce4c0344ce96e014e959d152a7f534c5, type: 2}
     - target: {fileID: 919132149155446097, guid: 32f3452be78087842a1397efa4800ec8, type: 3}
       propertyPath: m_Name
       value: SM_Floor_AC
@@ -1655,6 +1683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Doorway_AC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6728128925903845749, guid: 81f3edf9d00e342419503e28844d0682, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1839,6 +1871,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Doorway_AC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6728128925903845749, guid: 81f3edf9d00e342419503e28844d0682, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1980,7 +2016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.59
+      value: 1.516
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2014,6 +2050,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94e8d375314abd444a8f319e24c4a157, type: 2}
     - target: {fileID: 919132149155446097, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
       propertyPath: m_Name
       value: SM_Shelf_AC (2)
@@ -2483,7 +2523,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c64c7f64b65ec0f42bb5a576ec1c1197, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2de9dad708dd4c940a80e4fe4ab67ccc, type: 2}
+      objectReference: {fileID: 2100000, guid: ce4c0344ce96e014e959d152a7f534c5, type: 2}
     - target: {fileID: 919132149155446097, guid: c64c7f64b65ec0f42bb5a576ec1c1197, type: 3}
       propertyPath: m_Name
       value: SM_Wall_AC
@@ -2611,6 +2651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Doorway_AC
       objectReference: {fileID: 0}
+    - target: {fileID: 6728128925903845749, guid: 81f3edf9d00e342419503e28844d0682, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 6981300730514352597, guid: 81f3edf9d00e342419503e28844d0682, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2837,7 +2881,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c64c7f64b65ec0f42bb5a576ec1c1197, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2de9dad708dd4c940a80e4fe4ab67ccc, type: 2}
+      objectReference: {fileID: 2100000, guid: ce4c0344ce96e014e959d152a7f534c5, type: 2}
     - target: {fileID: 919132149155446097, guid: c64c7f64b65ec0f42bb5a576ec1c1197, type: 3}
       propertyPath: m_Name
       value: SM_Wall_AC
@@ -3081,6 +3125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6e738017933af214ab562b7fb74c9f50, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 919132149155446097, guid: 6e738017933af214ab562b7fb74c9f50, type: 3}
       propertyPath: m_Name
       value: SM_FreezerInterior_AC
@@ -3173,6 +3221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 919132149155446097, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
       propertyPath: m_Name
       value: SM_FreezerBox_AC (1)
@@ -3405,6 +3457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Doorway_AC
       objectReference: {fileID: 0}
+    - target: {fileID: 6728128925903845749, guid: 81f3edf9d00e342419503e28844d0682, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 6981300730514352597, guid: 81f3edf9d00e342419503e28844d0682, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4004,6 +4060,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 919132149155446097, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
       propertyPath: m_Name
       value: SM_Shelf_AC
@@ -4164,6 +4224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 919132149155446097, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
       propertyPath: m_Name
       value: SM_FreezerBox_AC (1)
@@ -4360,7 +4424,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c64c7f64b65ec0f42bb5a576ec1c1197, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2de9dad708dd4c940a80e4fe4ab67ccc, type: 2}
+      objectReference: {fileID: 2100000, guid: ce4c0344ce96e014e959d152a7f534c5, type: 2}
     - target: {fileID: 919132149155446097, guid: c64c7f64b65ec0f42bb5a576ec1c1197, type: 3}
       propertyPath: m_Name
       value: SM_Wall_AC
@@ -4453,6 +4517,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 700d4968594b52e4780f5a5c931a4196, type: 2}
     - target: {fileID: 919132149155446097, guid: 4e39b6c29715ab547ae2b0bdd254bff9, type: 3}
       propertyPath: m_Name
       value: SM_FreezerBox_AC
@@ -5145,6 +5213,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94e8d375314abd444a8f319e24c4a157, type: 2}
     - target: {fileID: 919132149155446097, guid: e10dd1ce60133ba44b5f42879723479c, type: 3}
       propertyPath: m_Name
       value: SM_Shelf_AC (1)
@@ -5889,7 +5961,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 32f3452be78087842a1397efa4800ec8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ff7730250046f8141a8557f8f5b08837, type: 2}
+      objectReference: {fileID: 2100000, guid: ce4c0344ce96e014e959d152a7f534c5, type: 2}
     - target: {fileID: 919132149155446097, guid: 32f3452be78087842a1397efa4800ec8, type: 3}
       propertyPath: m_Name
       value: SM_Floor_AC
