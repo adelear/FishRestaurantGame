@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fryer : MonoBehaviour
 {
+    [SerializeField] ParticleSystem steam; 
     bool IsSeatEmpty()
     {
         if (GetComponentInChildren<Cookables>()) return false;
@@ -33,6 +34,7 @@ public class Fryer : MonoBehaviour
                 {
                     cookables.isSeated = true;
                     cookables.StartCooking();
+                    steam.Play(); 
                     Debug.Log("Cooking yippee");
                 }
             }
