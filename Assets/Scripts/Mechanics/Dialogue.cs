@@ -46,6 +46,7 @@ public class Dialogue : MonoBehaviour
 
     void StartTyping()
     {
+        GameManager.Instance.SwitchState(GameManager.GameState.PAUSE); 
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
@@ -73,12 +74,14 @@ public class Dialogue : MonoBehaviour
             gameObject.SetActive(false);
             // Trigger Ending Received 
             // Move to gameOver
+            GameManager.Instance.SwitchState(GameManager.GameState.DEFEAT); 
             Debug.Log("Game Over"); 
             //SceneTransitionManager.Instance.LoadScene("MainMenu"); 
         }
         else
         {
             gameObject.SetActive(false);
+            GameManager.Instance.SwitchState(GameManager.GameState.GAME);
         }
     }
 

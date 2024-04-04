@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6563038761636416367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   - For its cleanliness and food qualty?
   - I'm glad I resorted to cannibalism.
   textSpeed: 0.05
-  isOutro: 0
+  isOutro: 1
   dialogueSound: {fileID: 8300000, guid: 40caa6eb282c51547afab130b0935b9e, type: 3}
   audioManager: {fileID: 7845679297308228968, guid: 4ce57384f5b8ed249996e384f673aff2, type: 3}
 --- !u!1 &3092688607716132143
