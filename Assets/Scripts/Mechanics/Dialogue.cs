@@ -76,7 +76,7 @@ public class Dialogue : MonoBehaviour
             // Move to gameOver
             GameManager.Instance.SwitchState(GameManager.GameState.DEFEAT); 
             Debug.Log("Game Over"); 
-            //SceneTransitionManager.Instance.LoadScene("MainMenu"); 
+            SceneTransitionManager.Instance.LoadScene("MainMenu"); 
         }
         else
         {
