@@ -34,6 +34,7 @@ public class CameraChangeManager : MonoBehaviour
 
     private void AddPointerEnterListener(Button button, UnityEngine.Events.UnityAction action)
     {
+        if (GameManager.Instance.GetGameState() != GameManager.GameState.GAME) return; 
         EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
         if (trigger == null)
             trigger = button.gameObject.AddComponent<EventTrigger>();
