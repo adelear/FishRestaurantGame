@@ -10,7 +10,6 @@ public class Dialogue : MonoBehaviour
     public float textSpeed = 0.05f;
     public bool isOutro = false;
     public AudioClip dialogueSound;
-    [SerializeField] AudioManager audioManager;
 
 
     private int index;
@@ -36,7 +35,7 @@ public class Dialogue : MonoBehaviour
         {
             if (playSound)
             {
-                audioManager.PlayOneShot(dialogueSound, false); // Play dialogue sound for every other letter
+                AudioManager.Instance.PlayOneShot(dialogueSound, false); // Play dialogue sound for every other letter
             }
             textComponent.text += c;
             playSound = !playSound; // Toggle the flag

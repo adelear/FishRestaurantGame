@@ -198,7 +198,7 @@ public class CanvasManager : MonoBehaviour
         trigger.triggers.Add(entry);
     } 
 
-    void PlayButtonSound()
+    public void PlayButtonSound()
     {
         asm.PlayOneShot(buttonSound, false);
     }

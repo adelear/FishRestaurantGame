@@ -14,7 +14,7 @@ public class FishSpawner : MonoBehaviour
     private float spawnTimer = 0f;
     private float totalTimeElapsed = 0f;
     private float currentSpawnInterval;
-    private float gameTime = 600f; 
+    private float gameTime = 60f; 
 
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
@@ -23,6 +23,8 @@ public class FishSpawner : MonoBehaviour
     float maxXBound = 7.2f;
     float minZBound = -0.5f;
     float maxZBound = 13f;
+
+    public AudioClip[] gameEndJingles; // 0-4 worst to best
 
     public static FishSpawner Instance { get; private set; }
 
@@ -76,6 +78,8 @@ public class FishSpawner : MonoBehaviour
         }
         if (totalTimeElapsed >= gameTime)
         {
+            AudioSource levelMusic = GameObject.Find("LevelMusic").GetComponent<AudioSource>();
+            levelMusic.Stop(); 
             GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
             foreach (GameObject fish in fishes) Destroy(fish);
                 
@@ -83,23 +87,28 @@ public class FishSpawner : MonoBehaviour
 
             if (averageRating >= 0f && averageRating < 1f)
             {
-                endingDialogues[0].SetActive(true); 
+                endingDialogues[0].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[0], false); 
             }
             else if (averageRating >= 1f && averageRating < 2f)
             {
-                endingDialogues[1].SetActive(true); 
+                endingDialogues[1].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[1], false);
             }
             else if (averageRating >= 2f && averageRating < 3f)
             {
-                endingDialogues[2].SetActive(true); 
+                endingDialogues[2].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[2], false);
             }
             else if (averageRating >= 3f && averageRating <= 4f)
             {
-                endingDialogues[3].SetActive(true); 
+                endingDialogues[3].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[3], false);
             }
             else if (averageRating >= 4f && averageRating <= 5f)
             {
                 endingDialogues[4].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[4], false);
             }
         }
     }

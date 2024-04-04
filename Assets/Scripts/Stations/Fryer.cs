@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Fryer : MonoBehaviour
 {
-    [SerializeField] ParticleSystem steam; 
+    [SerializeField] ParticleSystem steam;
+    [SerializeField] AudioClip sizzle; 
     bool IsSeatEmpty()
     {
         if (GetComponentInChildren<Cookables>()) return false;
@@ -34,6 +35,7 @@ public class Fryer : MonoBehaviour
                 {
                     cookables.isSeated = true;
                     cookables.StartCooking();
+                    AudioManager.Instance.PlayOneShot(sizzle, false);  
                     steam.Play(); 
                     Debug.Log("Cooking yippee");
                 }

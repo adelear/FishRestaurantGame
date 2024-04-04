@@ -27,7 +27,13 @@ public class Fish : Cookables
     private float pausedTime; 
     private bool isPaused;
     private bool isJudging;
-    private int judgeNum; 
+    private int judgeNum;
+
+    [Header("Audio Components")]
+    public AudioClip[] angryBlubs;
+    public AudioClip[] happyBlubs;
+    private AudioSource flailAudioSource; 
+
     public FishStates CurrentState
     {
         get { return currentState; }
@@ -64,6 +70,7 @@ public class Fish : Cookables
     protected override void Start()
     {
         base.Start();
+        flailAudioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         isSeated = false;
         isJudging = false; 
@@ -180,6 +187,14 @@ public class Fish : Cookables
         yield return new WaitForSeconds(3f);
         GameManager.Instance.ChangeRating(nomNoms.foodQuality);
         FishSpawner.Instance.currentFishNum--;
+
+        AudioClip[] soundArray = nomNoms.foodQuality >= 3 ? happyBlubs : angryBlubs;
+
+        if (soundArray.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, soundArray.Length);
+            AudioManager.Instance.PlayOneShot(soundArray[randomIndex], false);
+        }
         Destroy(gameObject);
     }
 
@@ -216,7 +231,11 @@ public class Fish : Cookables
     protected override void Update()
     {
         base.Update();
-        if (!canCook) return; 
+        if (!canCook)
+        {
+            flailAudioSource.Stop(); 
+            return;
+        }
         if (isJudging)
         {
             emoteBubble.SetActive(true);
@@ -227,11 +246,14 @@ public class Fish : Cookables
         {
             emoteBubble.SetActive(false);
             anim.Play(flailAnim);
+            if (!flailAudioSource.isPlaying) flailAudioSource.Play();
+            
         }
         else if (CurrentState != FishStates.Hungry && CurrentState != FishStates.LeavingHangry)
         {
             anim.Play(idleAnim);
-            emoteBubble.SetActive(false); 
+            emoteBubble.SetActive(false);
+            flailAudioSource.Stop(); 
             return;
         }
         if (isBeingDragged)
