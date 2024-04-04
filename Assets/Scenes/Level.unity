@@ -13622,34 +13622,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.size
-      value: 10
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: My nAMe iS sIR LaBiNnaC aND wELcOME...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: 'To the grand opening of The Barrel! The restaurant of my dreams, ever
+        since I was a little guppy. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: "Hopefully I\u2019ve stocked up enough for the day, but I\u2019m sure
+        I won\u2019t get too many customers."
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[3]
-      value: Navigate through the Front of the House, the Kitchen, and Freezer
+      value: "If I run out of anything\u2026well\u2026I\u2019ll figure it out."
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[4]
-      value: In the freezer, you'll find what you need to feed my customers!
+      value: Navigate through the Front of the House, the Kitchen, and Freezer
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[5]
-      value: Simply drag and drop the food with LMB!
+      value: In the freezer, you'll find what you need to feed my customers!
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[6]
-      value: You can cook them in them in the fryer in the kitchen!
+      value: Simply drag and drop the food with LMB!
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[7]
-      value: And serve them at the front of the house!
+      value: You can cook them in them in the fryer in the kitchen!
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[8]
-      value: Be mindful of our resources though!
+      value: And serve them at the front of the house!
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[9]
+      value: Be mindful of our resources though!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
+      propertyPath: lines.Array.data[10]
       value: Good luck! Do not get me arrested :D
       objectReference: {fileID: 0}
     - target: {fileID: 6563038761636416367, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
