@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939766786551379211}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -951608786083511892, guid: 3633047bb619a3a438e15be0d24ecd51, type: 3}
 --- !u!23 &3755230775146890963
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -226,4 +226,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookables: {fileID: 9163207509981661638}
