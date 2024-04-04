@@ -46,6 +46,7 @@ public class CameraChangeManager : MonoBehaviour
 
     private void SwitchRoom(int targetRoom)
     {
+        if (GameManager.Instance.GetGameState() != GameManager.GameState.GAME) return; 
         if (!canSwitchCamera || targetRoom < 0 || targetRoom >= cameras.Length)
             return;
 
