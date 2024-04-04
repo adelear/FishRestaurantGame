@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro; 
 using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
@@ -14,7 +15,7 @@ public class FishSpawner : MonoBehaviour
     private float spawnTimer = 0f;
     private float totalTimeElapsed = 0f;
     private float currentSpawnInterval;
-    private float gameTime = 60f; 
+    private float gameTime = 10f; 
 
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
@@ -23,6 +24,8 @@ public class FishSpawner : MonoBehaviour
     float maxXBound = 7.2f;
     float minZBound = -0.5f;
     float maxZBound = 13f;
+
+    [SerializeField] TMP_Text timerText; 
 
     public AudioClip[] gameEndJingles; // 0-4 worst to best
 
@@ -68,11 +71,14 @@ public class FishSpawner : MonoBehaviour
                     AdjustSpawnInterval();
                 }
             }
-            // Format the total time elapsed into minutes, seconds, and milliseconds
-            int minutes = (int)(totalTimeElapsed / 60);
-            int seconds = (int)(totalTimeElapsed % 60);
-            int milliseconds = (int)((totalTimeElapsed - Mathf.Floor(totalTimeElapsed)) * 1000);
-            string formattedTime = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+
+            float remainingTime = Mathf.Max(0f, gameTime - totalTimeElapsed);
+
+            int hours = Mathf.FloorToInt(remainingTime / 3600);
+            int minutes = Mathf.FloorToInt((remainingTime % 3600) / 60);
+            int seconds = Mathf.FloorToInt(remainingTime % 60);
+
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
 
             //Debug.Log(formattedTime); 
         }
