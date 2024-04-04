@@ -14,10 +14,10 @@ public class Draggable : MonoBehaviour
     float maxZPosInRestaurant = 8.5f;
     float minZPosInRestaurant = -0.5f;
 
-    float maxZPosInKitchen = 15f; 
+    float maxZPosInKitchen = 16f; 
     float minZPosInKitchen = 10.2f;
 
-    float maxZPosInFreezer = 14.5f; 
+    float maxZPosInFreezer = 17f; 
     float minZPosInFreezer = 12f;
 
     private Vector3 GetMouseWorldPosition()
