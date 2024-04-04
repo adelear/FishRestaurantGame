@@ -26,7 +26,8 @@ public class Fish : Cookables
     private float remainingFeedingTime = 60f;
     private float pausedTime; 
     private bool isPaused;
-
+    private bool isJudging;
+    private int judgeNum; 
     public FishStates CurrentState
     {
         get { return currentState; }
@@ -65,6 +66,7 @@ public class Fish : Cookables
         base.Start();
         anim = GetComponent<Animator>();
         isSeated = false;
+        isJudging = false; 
         CurrentState = FishStates.Chilling;
         StartChilling();
     }
@@ -114,22 +116,26 @@ public class Fish : Cookables
     {
         Cookables cookables = nomNoms.GetComponent<Cookables>();
         if (feedingTimeCoroutine != null) StopCoroutine(feedingTimeCoroutine);
+        isJudging = true; 
         if (cookables.foodQuality < 2)
         {
-            emoteRenderer.sprite = emotes[1];
-            emoteBubble.SetActive(true);
+            judgeNum = 1; 
+            //emoteBubble.SetActive(true);
+            //emoteRenderer.sprite = emotes[1];
             Debug.Log("REVIEW: FOOD IS SHIT");
         }
         else if (cookables.foodQuality >= 2 && cookables.foodQuality < 4)
         {
-            emoteRenderer.sprite = emotes[2];
-            emoteBubble.SetActive(true);
+            judgeNum = 2;
+            //emoteBubble.SetActive(true);
+            //emoteRenderer.sprite = emotes[2];
             Debug.Log("HMM.... OKAY I GUESS");
         }
         else
-        {
-            emoteRenderer.sprite = emotes[0];
-            emoteBubble.SetActive(true);
+        {   
+            judgeNum = 0;
+            //emoteBubble.SetActive(true);
+            //emoteRenderer.sprite = emotes[0];
             Debug.Log("YUMMY");
         }
         StartCoroutine(JudgementTime(cookables));
@@ -156,6 +162,12 @@ public class Fish : Cookables
         base.StartCooking();
         CurrentState = FishStates.Cooking;
         StopAllCoroutines();
+    }
+
+    public override void StopCooking()
+    {
+        base.StopCooking();
+        anim.Play("Dead"); 
     }
 
     private void WalkAround()
@@ -204,6 +216,13 @@ public class Fish : Cookables
     protected override void Update()
     {
         base.Update();
+        if (!canCook) return; 
+        if (isJudging)
+        {
+            emoteBubble.SetActive(true);
+            emoteRenderer.sprite = emotes[judgeNum];
+            return; 
+        }
         if (isBeingDragged)
         {
             emoteBubble.SetActive(false);

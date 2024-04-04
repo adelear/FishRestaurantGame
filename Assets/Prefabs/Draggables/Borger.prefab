@@ -53,10 +53,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -163,17 +163,17 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1589966, y: 4.449686, z: 5.3494425}
-  m_Center: {x: -0.012512207, y: 1.1948423, z: 0.15564108}
+  m_Size: {x: 1.1589966, y: 1.8535738, z: 2.4861813}
+  m_Center: {x: -0.012512207, y: -0.10321379, z: -0.14784908}
 --- !u!1001 &7613450994814158107
 PrefabInstance:
   m_ObjectHideFlags: 0

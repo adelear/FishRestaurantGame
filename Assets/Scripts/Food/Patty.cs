@@ -9,6 +9,11 @@ public class Patty : Cookables
         base.StartCooking();
     }
 
+    public override void StopCooking()
+    {
+        base.StopCooking();
+    }
+
     public override void DetermineQuality()
     {
         base.DetermineQuality();

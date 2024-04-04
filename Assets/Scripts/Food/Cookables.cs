@@ -76,7 +76,7 @@ public class Cookables : Draggable
         }
     }
 
-    public void StopCooking()
+    public virtual void StopCooking()
     {
         if (isCooking) DetermineQuality();
     }
