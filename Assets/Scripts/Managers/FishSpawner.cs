@@ -15,7 +15,7 @@ public class FishSpawner : MonoBehaviour
     private float spawnTimer = 0f;
     private float totalTimeElapsed = 0f;
     private float currentSpawnInterval;
-    private float gameTime = 600f; 
+    private float gameTime = 300; 
 
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
@@ -66,7 +66,7 @@ public class FishSpawner : MonoBehaviour
                     spawnTimer = 0f;
                 }
 
-                if (totalTimeElapsed >= 240f && currentSpawnInterval != additionalSpawnIntervalMax)
+                if (totalTimeElapsed >= 120 && currentSpawnInterval != additionalSpawnIntervalMax)
                 {
                     AdjustSpawnInterval();
                 }
