@@ -10,7 +10,21 @@ public class CameraChangeManager : MonoBehaviour
     public Button rightButton;
 
     private bool canSwitchCamera = true;
-    private int currentRoom = 0;
+    public int currentRoom = 0;
+
+    public static CameraChangeManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
+    }
 
     void Start()
     {
