@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    outlineScale: 1.5
+    outlineScale: 1
     depthThreshold: 2.6
     robertsCrossMultiplier: 100
     normalThreshold: 0.4
@@ -84,7 +84,7 @@ MonoBehaviour:
     zFailOperation: 0
   m_ShadowTransparentReceive: 1
   m_RenderingMode: 0
-  m_DepthPrimingMode: 2
+  m_DepthPrimingMode: 1
   m_CopyDepthMode: 1
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
