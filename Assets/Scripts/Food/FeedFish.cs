@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FeedFish : MonoBehaviour
 {
-    private float spherecastRadius = 2f;
-    private float spherecastDistance = 2f;
+    private float spherecastRadius = 3f;
+    private float spherecastDistance = 3f;
+    [SerializeField] AudioClip eatingSound; 
 
     private void Update()
     {
@@ -29,6 +30,7 @@ public class FeedFish : MonoBehaviour
 
                     fish.ChangeState(FishStates.Served);
                     fish.Served(gameObject);
+                    AudioManager.Instance.PlayOneShot(eatingSound, false); 
                     Destroy(gameObject);
                 }
             }

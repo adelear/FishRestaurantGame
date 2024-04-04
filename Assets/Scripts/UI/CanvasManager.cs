@@ -100,7 +100,7 @@ public class CanvasManager : MonoBehaviour
 
     void LoadTitle()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneTransitionManager.Instance.LoadScene("MainMenu");
     }
     void UnpauseGame()
     {
@@ -171,7 +171,7 @@ public class CanvasManager : MonoBehaviour
     }
     void StartGame()
     {
-        SceneManager.LoadScene("Level"); ;
+        SceneTransitionManager.Instance.LoadScene("Level"); ;
         Time.timeScale = 1.0f;
         if (audioSource != null)
         {
@@ -198,7 +198,7 @@ public class CanvasManager : MonoBehaviour
         trigger.triggers.Add(entry);
     } 
 
-    void PlayButtonSound()
+    public void PlayButtonSound()
     {
         asm.PlayOneShot(buttonSound, false);
     }

@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steam: {fileID: 7341600774890124213}
+  audioManager: {fileID: 7845679297308228968, guid: 4ce57384f5b8ed249996e384f673aff2, type: 3}
+  sizzle: {fileID: 8300000, guid: 644fff22feeb6814292eb76c70a3b4ee, type: 3}
 --- !u!65 &5370732357199407252
 BoxCollider:
   m_ObjectHideFlags: 0

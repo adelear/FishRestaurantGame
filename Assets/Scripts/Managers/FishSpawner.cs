@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro; 
 using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
@@ -23,6 +24,10 @@ public class FishSpawner : MonoBehaviour
     float maxXBound = 7.2f;
     float minZBound = -0.5f;
     float maxZBound = 13f;
+
+    [SerializeField] TMP_Text timerText; 
+
+    public AudioClip[] gameEndJingles; // 0-4 worst to best
 
     public static FishSpawner Instance { get; private set; }
 
@@ -66,16 +71,21 @@ public class FishSpawner : MonoBehaviour
                     AdjustSpawnInterval();
                 }
             }
-            // Format the total time elapsed into minutes, seconds, and milliseconds
-            int minutes = (int)(totalTimeElapsed / 60);
-            int seconds = (int)(totalTimeElapsed % 60);
-            int milliseconds = (int)((totalTimeElapsed - Mathf.Floor(totalTimeElapsed)) * 1000);
-            string formattedTime = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+
+            float remainingTime = Mathf.Max(0f, gameTime - totalTimeElapsed);
+
+            int hours = Mathf.FloorToInt(remainingTime / 3600);
+            int minutes = Mathf.FloorToInt((remainingTime % 3600) / 60);
+            int seconds = Mathf.FloorToInt(remainingTime % 60);
+
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
 
             //Debug.Log(formattedTime); 
         }
         if (totalTimeElapsed >= gameTime)
         {
+            AudioSource levelMusic = GameObject.Find("LevelMusic").GetComponent<AudioSource>();
+            levelMusic.Stop(); 
             GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
             foreach (GameObject fish in fishes) Destroy(fish);
                 
@@ -83,23 +93,28 @@ public class FishSpawner : MonoBehaviour
 
             if (averageRating >= 0f && averageRating < 1f)
             {
-                endingDialogues[0].SetActive(true); 
+                endingDialogues[0].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[0], false); 
             }
             else if (averageRating >= 1f && averageRating < 2f)
             {
-                endingDialogues[1].SetActive(true); 
+                endingDialogues[1].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[1], false);
             }
             else if (averageRating >= 2f && averageRating < 3f)
             {
-                endingDialogues[2].SetActive(true); 
+                endingDialogues[2].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[2], false);
             }
             else if (averageRating >= 3f && averageRating <= 4f)
             {
-                endingDialogues[3].SetActive(true); 
+                endingDialogues[3].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[3], false);
             }
             else if (averageRating >= 4f && averageRating <= 5f)
             {
                 endingDialogues[4].SetActive(true);
+                AudioManager.Instance.PlayOneShot(gameEndJingles[4], false);
             }
         }
     }
