@@ -32,7 +32,7 @@ public class Fish : Cookables
     [Header("Audio Components")]
     public AudioClip[] angryBlubs;
     public AudioClip[] happyBlubs;
-    private AudioSource flailAudioSource; 
+    public AudioSource flailAudioSource; 
 
     public FishStates CurrentState
     {
@@ -169,6 +169,7 @@ public class Fish : Cookables
         base.StartCooking();
         CurrentState = FishStates.Cooking;
         StopAllCoroutines();
+        if (flailAudioSource.isPlaying) flailAudioSource.Stop();
     }
 
     public override void StopCooking()

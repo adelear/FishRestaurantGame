@@ -20,10 +20,10 @@ public class FishSpawner : MonoBehaviour
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
 
-    float minXBound = -14.2f; 
+    float minXBound = -12.2f; 
     float maxXBound = 7.2f;
-    float minZBound = -0.5f;
-    float maxZBound = 13f;
+    float minZBound = 5f;
+    float maxZBound = 10f;
 
     [SerializeField] TMP_Text timerText; 
 
