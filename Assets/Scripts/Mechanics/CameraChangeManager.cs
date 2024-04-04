@@ -53,6 +53,11 @@ public class CameraChangeManager : MonoBehaviour
         Camera.main.transform.position = cameras[targetRoom].position;
         currentRoom = targetRoom;
         canSwitchCamera = false;
+
+        Vector3 mousePosition = Input.mousePosition;
+
+        if (targetRoom > currentRoom) mousePosition.x = Screen.width * 0.1f;
+        else mousePosition.x = Screen.width * 0.9f; 
         
         switch (currentRoom)
         {

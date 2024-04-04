@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FeedFish : MonoBehaviour
 {
-    private float spherecastRadius = 3f;
-    private float spherecastDistance = 3f;
+    private float spherecastRadius = 2f;
+    private float spherecastDistance = 2f;
 
     private void Update()
     {

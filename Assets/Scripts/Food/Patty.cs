@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Patty : Cookables
 {
+    public Sprite borgerSprite; 
     public override void StartCooking()
     {
         base.StartCooking();
@@ -12,6 +13,7 @@ public class Patty : Cookables
     public override void StopCooking()
     {
         base.StopCooking();
+        GetComponent<SpriteRenderer>().sprite = borgerSprite;     
     }
 
     public override void DetermineQuality()
