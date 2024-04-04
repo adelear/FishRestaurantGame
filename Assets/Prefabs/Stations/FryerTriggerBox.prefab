@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7072903846471697550}
   - component: {fileID: 978093938917677781}
   - component: {fileID: 5370732357199407252}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FryerTriggerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

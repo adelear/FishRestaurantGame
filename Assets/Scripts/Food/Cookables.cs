@@ -72,7 +72,7 @@ public class Cookables : Draggable
         if (!isCooking && canCook)
         {
             isCooking = true;
-            canCook = false; 
+            canCook = false;
         }
     }
 

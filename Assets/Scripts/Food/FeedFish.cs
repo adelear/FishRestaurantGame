@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class FeedFish : MonoBehaviour
 {
-    private float spherecastRadius = 2f;
-    private float spherecastDistance = 2f;
+    private float spherecastRadius = 3f;
+    private float spherecastDistance = 3f;
 
     private void Update()
     {
+        Cookables cookables = GetComponent<Cookables>();
+        if (cookables.canCook) return;
         // Cast a sphere forward from the object's position
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, spherecastRadius, transform.forward, out hit, spherecastDistance))
         {
-            DebugDrawSphereCast(transform.position, transform.forward, hit.distance, spherecastRadius, Color.red); 
+            DebugDrawSphereCast(transform.position, transform.forward, hit.distance, spherecastRadius, Color.red);
             if (hit.collider.CompareTag("Fish"))
             {
-                Cookables cookables = GetComponent<Cookables>();
-                if (cookables != null) if (cookables.canCook) return;
+                Debug.Log("TESTING"); 
                 Fish fish = hit.collider.GetComponent<Fish>();
-                if (fish != null && fish.CurrentState == FishStates.Hungry ) 
+                if (fish != null && fish.CurrentState == FishStates.Hungry)
                 {
                     // Move the object's z value closer to the fish
                     Vector3 newPos = transform.position;
@@ -34,6 +35,7 @@ public class FeedFish : MonoBehaviour
         }
     }
 
+
     private void DebugDrawSphereCast(Vector3 origin, Vector3 direction, float distance, float radius, Color color)
     {
         Vector3 end = origin + direction * distance;
@@ -47,5 +49,5 @@ public class FeedFish : MonoBehaviour
         Debug.DrawLine(end - Vector3.right * radius, end + Vector3.right * radius, color);
         Debug.DrawLine(end - Vector3.up * radius, end + Vector3.up * radius, color);
         Debug.DrawLine(end - Vector3.forward * radius, end + Vector3.forward * radius, color);
-    } 
+    }
 }

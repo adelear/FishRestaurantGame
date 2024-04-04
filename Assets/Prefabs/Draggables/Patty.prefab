@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4974879165195679837}
   - component: {fileID: 9163207509981661638}
   - component: {fileID: 7830140369380838134}
+  - component: {fileID: 8379067700235689029}
   m_Layer: 3
   m_Name: Patty
   m_TagString: Patty
@@ -33,8 +34,7 @@ Transform:
   m_LocalPosition: {x: 59.53, y: 0.86, z: 6.62}
   m_LocalScale: {x: 0.86329097, y: 0.941371, z: 0.7733}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4397076349312021311}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4867970856659682916
@@ -160,67 +160,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!1 &6365314267711984766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4397076349312021311}
-  - component: {fileID: 8259629440177611320}
-  - component: {fileID: 957871697240007262}
-  m_Layer: 0
-  m_Name: TriggerBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4397076349312021311
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6365314267711984766}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.158358, y: 1.0622804, z: 1.2931592}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1828093213703647177}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8259629440177611320
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6365314267711984766}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 2.3285503}
-  m_Center: {x: 0, y: 0, z: -0.011567593}
---- !u!114 &957871697240007262
+--- !u!114 &8379067700235689029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6365314267711984766}
+  m_GameObject: {fileID: 939766786551379211}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}

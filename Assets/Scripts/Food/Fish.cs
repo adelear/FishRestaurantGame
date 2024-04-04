@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Fish : Cookables
 {
+
+    [Header("Emote Components")]
+    public GameObject emoteBubble;
+    public Sprite[] emotes; // 0 happy, 1 is mad, 2 is MEH, 3 is hungry
+    public SpriteRenderer emoteRenderer;
+
     public event Action<FishStates> OnStateChanged;
     private FishStates currentState;
     public FishType fishType;
@@ -87,6 +93,8 @@ public class Fish : Cookables
     private void Hungry()
     {
         anim.Play(hungryAnim);
+        emoteBubble.SetActive(true);
+        emoteRenderer.sprite = emotes[3]; 
         feedingTimeCoroutine = StartCoroutine(FeedingTimer());
     }
 
@@ -106,12 +114,32 @@ public class Fish : Cookables
     {
         Cookables cookables = nomNoms.GetComponent<Cookables>();
         if (feedingTimeCoroutine != null) StopCoroutine(feedingTimeCoroutine);
+        if (cookables.foodQuality < 2)
+        {
+            emoteRenderer.sprite = emotes[1];
+            emoteBubble.SetActive(true);
+            Debug.Log("REVIEW: FOOD IS SHIT");
+        }
+        else if (cookables.foodQuality >= 2 && cookables.foodQuality < 4)
+        {
+            emoteRenderer.sprite = emotes[2];
+            emoteBubble.SetActive(true);
+            Debug.Log("HMM.... OKAY I GUESS");
+        }
+        else
+        {
+            emoteRenderer.sprite = emotes[0];
+            emoteBubble.SetActive(true);
+            Debug.Log("YUMMY");
+        }
         StartCoroutine(JudgementTime(cookables));
     }
 
     private void LeavingHangry()
     {
         anim.Play(angryAnim);
+        emoteBubble.SetActive(true);
+        emoteRenderer.sprite = emotes[1]; 
         StartCoroutine(HangryCoroutine());
     }
 
@@ -138,24 +166,11 @@ public class Fish : Cookables
     IEnumerator JudgementTime(Cookables nomNoms)
     {
         yield return new WaitForSeconds(3f);
-
-        if (nomNoms.foodQuality < 2)
-        {
-            Debug.Log("REVIEW: FOOD IS SHIT");
-        }
-        else if (nomNoms.foodQuality >= 2 && nomNoms.foodQuality < 4)
-        {
-            Debug.Log("HMM.... OKAY I GUESS");
-        }
-        else
-        {
-            Debug.Log("YUMMY");
-        }
-        yield return new WaitForSeconds(3f);
         GameManager.Instance.ChangeRating(nomNoms.foodQuality);
         FishSpawner.Instance.currentFishNum--;
         Destroy(gameObject);
     }
+
 
     public override void DetermineQuality()
     {
@@ -189,16 +204,22 @@ public class Fish : Cookables
     protected override void Update()
     {
         base.Update();
-        if (isBeingDragged) anim.Play(flailAnim);
+        if (isBeingDragged)
+        {
+            emoteBubble.SetActive(false);
+            anim.Play(flailAnim);
+        }
         else if (CurrentState != FishStates.Hungry && CurrentState != FishStates.LeavingHangry)
         {
             anim.Play(idleAnim);
+            emoteBubble.SetActive(false); 
             return;
         }
         if (isBeingDragged)
         {
             // Animation plays
             // Pause the feeding timer 
+            emoteBubble.SetActive(false); 
             if (feedingTimeCoroutine != null)
             {
                 StopCoroutine(feedingTimeCoroutine);
