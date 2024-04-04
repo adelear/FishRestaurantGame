@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6559697833568414801}
   - component: {fileID: 2651035361773433330}
   m_Layer: 5
-  m_Name: IntroDialogueBox
+  m_Name: WorstEnding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,11 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 4325355912373865222}
   lines:
-  - 'The grand opening of The Barrel! The restaurant of my dreams, ever since I was
-    a little guppy. '
-  - "Hopefully I\u2019ve stocked up enough for the day, but I\u2019m sure I won\u2019t
-    get too many customers."
-  - "If I run out of anything\u2026well\u2026I\u2019ll figure it out."
+  - The  health inspector discovered evidence of cannibalism in the restaurant...
+  - Unfortunately, the restaurant is shut down
+  - and I'm sentenced to five years in jail :(
   textSpeed: 0.05
   isOutro: 0
   dialogueSound: {fileID: 8300000, guid: 40caa6eb282c51547afab130b0935b9e, type: 3}
