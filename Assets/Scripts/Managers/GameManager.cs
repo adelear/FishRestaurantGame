@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             float ratingChange = AverageRating - previousAverageRating;
             ChangeRatingBar(ratingChange); 
         }
-    }
+    } 
 
     private float ratingChangeSpeed = 0.5f; 
 

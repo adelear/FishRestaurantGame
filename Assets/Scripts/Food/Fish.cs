@@ -145,24 +145,26 @@ public class Fish : Cookables
 
     IEnumerator JudgementTime(Cookables nomNoms)
     {
-        yield return new WaitForSeconds(3f); 
-
-        if (nomNoms.foodQuality < 2)
-        {
-            Debug.Log("REVIEW: FOOD IS SHIT"); 
-        }
-        else if (nomNoms.foodQuality >= 2 && nomNoms.foodQuality < 4)
-        {
-            Debug.Log("HMM.... OKAY I GUESS"); 
-        }
-        else
-        {
-            Debug.Log("YUMMY"); 
-        }
         yield return new WaitForSeconds(3f);
-        GameManager.Instance.ChangeRating(nomNoms.foodQuality); 
-        FishSpawner.Instance.currentFishNum--; 
-        Destroy(gameObject); 
+        if (nomNoms != null)
+        {
+            if (nomNoms.foodQuality < 2)
+            {
+                Debug.Log("REVIEW: FOOD IS SHIT");
+            }
+            else if (nomNoms.foodQuality >= 2 && nomNoms.foodQuality < 4)
+            {
+                Debug.Log("HMM.... OKAY I GUESS");
+            }
+            else
+            {
+                Debug.Log("YUMMY");
+            }
+            yield return new WaitForSeconds(3f);
+            GameManager.Instance.ChangeRating(nomNoms.foodQuality);
+            FishSpawner.Instance.currentFishNum--;
+            Destroy(gameObject);
+        } 
     }
 
     public override void DetermineQuality()
@@ -198,7 +200,7 @@ public class Fish : Cookables
     {
         base.Update();
         if (isBeingDragged) anim.Play(flailAnim);
-        else if (CurrentState != FishStates.Hungry)
+        else if (CurrentState != FishStates.Hungry && CurrentState != FishStates.LeavingHangry)
         {
             anim.Play(idleAnim);
             return; 

@@ -41,14 +41,13 @@ public class Fryer : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!IsSeatEmpty()) return; 
-        if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty"))
+        if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty") )
         {
             Cookables cookables = other.GetComponent<Cookables>();
 
             // If the exiting cookable is the one currently cooking in the fryer,
             // don't remove it from the parent and stop cooking
-            if (cookables.isSeated && cookables.isCooking && transform.IsChildOf(cookables.transform))
+            if (cookables.isSeated && cookables.isCooking && other.transform.IsChildOf(transform))
             {
                 cookables.isValidPosition = true;
                 cookables.lockOntoNewPosition = false;
