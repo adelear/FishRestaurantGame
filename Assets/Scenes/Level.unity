@@ -13704,7 +13704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[7]
-      value: You can cook them in them in the fryer in the kitchen!
+      value: You can cook them in the fryer in the kitchen!
       objectReference: {fileID: 0}
     - target: {fileID: 2651035361773433330, guid: a6b4a06b8d6978744acc9f11dbac893e, type: 3}
       propertyPath: lines.Array.data[8]

@@ -168,6 +168,7 @@ public class Fish : Cookables
     {
         base.StartCooking();
         CurrentState = FishStates.Cooking;
+        emoteBubble.SetActive(false); 
         StopAllCoroutines();
         if (flailAudioSource.isPlaying) flailAudioSource.Stop();
     }

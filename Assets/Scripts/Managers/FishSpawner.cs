@@ -15,7 +15,8 @@ public class FishSpawner : MonoBehaviour
     private float spawnTimer = 0f;
     private float totalTimeElapsed = 0f;
     private float currentSpawnInterval;
-    private float gameTime = 300; 
+    private float timeToStopSpawning = 300f; 
+    private float gameTime = 390f; 
 
     private float timeSinceLastAdjustment = 0f;
     private const float timeBetweenAdjustments = 120f; 
@@ -60,16 +61,17 @@ public class FishSpawner : MonoBehaviour
             {
                 spawnTimer += Time.deltaTime;
 
-                if (spawnTimer >= currentSpawnInterval)
+                if (spawnTimer >= currentSpawnInterval && totalTimeElapsed < timeToStopSpawning)
                 {
                     SpawnFish();
                     spawnTimer = 0f;
                 }
 
-                if (totalTimeElapsed >= 120 && currentSpawnInterval != additionalSpawnIntervalMax)
+                if (totalTimeElapsed >= 120 && currentSpawnInterval != additionalSpawnIntervalMax && totalTimeElapsed < timeToStopSpawning)
                 {
                     AdjustSpawnInterval();
                 }
+
             }
 
             float remainingTime = Mathf.Max(0f, gameTime - totalTimeElapsed);
