@@ -7,8 +7,18 @@ public class Draggable : MonoBehaviour
     public LayerMask draggableLayer; 
     Vector3 mousePosition;
     private float zOffsetFactor = 0.001f;
-    float maxZPos = 8.5f;
-    float minZPos = -0.5f;
+
+    float minZPos;
+    float maxZPos; 
+
+    float maxZPosInRestaurant = 8.5f;
+    float minZPosInRestaurant = -0.5f;
+
+    float maxZPosInKitchen = 15f; 
+    float minZPosInKitchen = 10.2f;
+
+    float maxZPosInFreezer = 14.5f; 
+    float minZPosInFreezer = 12f;
 
     private Vector3 GetMouseWorldPosition()
     {
@@ -28,6 +38,22 @@ public class Draggable : MonoBehaviour
 
     protected virtual void OnMouseDrag()
     {
+        if (CameraChangeManager.Instance.currentRoom == 0)
+        {
+            maxZPos = maxZPosInRestaurant;
+            minZPos = minZPosInRestaurant;
+        }
+        else if (CameraChangeManager.Instance.currentRoom == 1)
+        {
+            maxZPos = maxZPosInKitchen;
+            minZPos = minZPosInKitchen;
+        }
+        else
+        {
+            maxZPos = maxZPosInFreezer;
+            minZPos = minZPosInFreezer;
+        }
+
         Plane plane = new Plane(Camera.main.transform.forward, transform.position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float distance;
