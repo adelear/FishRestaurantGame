@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 605263255}
-  m_IndirectSpecularColor: {r: 0.004860499, g: 0.108844146, b: 0.2684816, a: 1}
+  m_IndirectSpecularColor: {r: 0.023858873, g: 0.34925905, b: 0.7592586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1864,30 +1864,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1842932152}
     m_Modifications:
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.x
-      value: 1.6131439
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.y
-      value: 2.1480162
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.z
-      value: 2.743597
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.x
-      value: 0.15050507
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.y
-      value: 0.10695198
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.z
-      value: -0.23958874
-      objectReference: {fileID: 0}
     - target: {fileID: 5908637112667957033, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_Name
       value: FryerTriggerBox (1)
@@ -1902,7 +1878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.024999917
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2574,30 +2550,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1842932152}
     m_Modifications:
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.x
-      value: 1.6131439
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.y
-      value: 2.1480162
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.z
-      value: 2.743597
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.x
-      value: 0.15050507
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.y
-      value: 0.10695198
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.z
-      value: -0.23958874
-      objectReference: {fileID: 0}
     - target: {fileID: 5908637112667957033, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_Name
       value: FryerTriggerBox (2)
@@ -2612,7 +2564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.04099989
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24022,30 +23974,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1842932152}
     m_Modifications:
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.x
-      value: 1.6131439
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.y
-      value: 2.1480162
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Size.z
-      value: 2.743597
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.x
-      value: 0.15050507
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.y
-      value: 0.10695198
-      objectReference: {fileID: 0}
-    - target: {fileID: 5370732357199407252, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
-      propertyPath: m_Center.z
-      value: -0.23958874
-      objectReference: {fileID: 0}
     - target: {fileID: 5908637112667957033, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_Name
       value: FryerTriggerBox (3)
@@ -24060,7 +23988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13099992
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28253,7 +28181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.020999908
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7072903846471697550, guid: c3228ec69951640418b2b296a1a779d8, type: 3}
       propertyPath: m_LocalRotation.w

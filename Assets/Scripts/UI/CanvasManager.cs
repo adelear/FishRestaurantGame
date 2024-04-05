@@ -22,14 +22,17 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button settingsButton;
     [SerializeField] Button backButton;
+    [SerializeField] Button backButton2; 
     [SerializeField] Button quitButton;
     [SerializeField] Button returnToMenuButton;
     [SerializeField] Button resumeGame;
+    [SerializeField] Button creditsButton; 
 
     [Header("Menus")]
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] GameObject creditsMenu; 
 
     [Header("Sliders")]
     [SerializeField] Slider masterSlider;
@@ -53,11 +56,24 @@ public class CanvasManager : MonoBehaviour
             settingsButton.onClick.AddListener(ShowSettingsMenu);
         }
 
+        if (creditsButton)
+        {
+            EventTrigger creditsButtoNTrigger = creditsButton.gameObject.AddComponent<EventTrigger>();
+            AddPointerEnterEvent(creditsButtoNTrigger, PlayButtonSound);
+            creditsButton.onClick.AddListener(ShowCreditsPage);
+        }
 
         if (backButton)
         {
             backButton.onClick.AddListener(ShowMainMenu);
             EventTrigger backButtonTrigger = backButton.gameObject.AddComponent<EventTrigger>();
+            AddPointerEnterEvent(backButtonTrigger, PlayButtonSound);
+        }
+
+        if (backButton2)
+        {
+            backButton2.onClick.AddListener(ShowMainMenu);
+            EventTrigger backButtonTrigger = backButton2.gameObject.AddComponent<EventTrigger>();
             AddPointerEnterEvent(backButtonTrigger, PlayButtonSound);
         }
 
@@ -101,6 +117,7 @@ public class CanvasManager : MonoBehaviour
     void LoadTitle()
     {
         SceneTransitionManager.Instance.LoadScene("MainMenu");
+        Time.timeScale = 1.0f; 
     }
     void UnpauseGame()
     {
@@ -164,9 +181,16 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
+    void ShowCreditsPage()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(false); 
+        creditsMenu.SetActive(true);
+    }
     void ShowMainMenu()
     {
         settingsMenu.SetActive(false);
+        creditsMenu.SetActive(false); 
         mainMenu.SetActive(true);
     }
     void StartGame()
