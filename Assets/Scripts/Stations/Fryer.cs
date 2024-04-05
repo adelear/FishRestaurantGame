@@ -15,10 +15,15 @@ public class Fryer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Lock Onto Fryer if seat is empty 
-        if (!IsSeatEmpty()) return; 
+        
         if (other.gameObject.CompareTag("Fish") || other.gameObject.CompareTag("Patty"))
         {
             Cookables cookables = other.GetComponent<Cookables>();
+            if (!IsSeatEmpty()) 
+            {
+                cookables.isValidPosition = false;
+                return;
+            }
             if (!cookables.canCook) return;
             if (!IsSeatEmpty())
             {

@@ -294,4 +294,9 @@ public class Fish : Cookables
             StartCoroutine(FeedingTimer()); 
         }
     }
+
+    private void OnDestroy()
+    {
+        if (flailAudioSource.isPlaying) flailAudioSource.Stop(); 
+    }
 }

@@ -12,6 +12,7 @@ public class FeedFish : MonoBehaviour
     {
         Cookables cookables = GetComponent<Cookables>();
         if (cookables.canCook) return;
+        if (cookables.isCooking) return; 
         // Cast a sphere forward from the object's position
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, spherecastRadius, transform.forward, out hit, spherecastDistance))

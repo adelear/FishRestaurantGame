@@ -26,6 +26,8 @@ public class FishSpawner : MonoBehaviour
     float minZBound = 5f;
     float maxZBound = 10f;
 
+    bool anyFishCanBeCooked;
+
     [SerializeField] TMP_Text timerText; 
 
     public AudioClip[] gameEndJingles; // 0-4 worst to best
@@ -48,6 +50,7 @@ public class FishSpawner : MonoBehaviour
     private void Start()
     {
         currentSpawnInterval = Random.Range(initialSpawnIntervalMin, initialSpawnIntervalMax);
+        anyFishCanBeCooked = true; 
     }
 
     private void Update()
@@ -70,9 +73,10 @@ public class FishSpawner : MonoBehaviour
                 if (totalTimeElapsed >= 120 && currentSpawnInterval != additionalSpawnIntervalMax && totalTimeElapsed < timeToStopSpawning)
                 {
                     AdjustSpawnInterval();
-                }
-
+                }  
             }
+
+            
 
             float remainingTime = Mathf.Max(0f, gameTime - totalTimeElapsed);
 
@@ -83,44 +87,67 @@ public class FishSpawner : MonoBehaviour
             timerText.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
 
             //Debug.Log(formattedTime); 
+            if (totalTimeElapsed > timeToStopSpawning)
+            {
+                bool anyFishCanBeCooked = false; // Flag to track if any fish can be cooked
+
+                GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
+                foreach (GameObject fish in fishes)
+                {
+                    Fish fishScript = fish.GetComponent<Fish>();
+                    if (fishScript.canCook)
+                    {
+                        anyFishCanBeCooked = true;
+                        break; 
+                    }
+                }
+                if (!anyFishCanBeCooked)
+                {
+                    GameEnd();
+                }
+            }
         }
         if (totalTimeElapsed >= gameTime)
         {
-            AudioSource levelMusic = GameObject.Find("LevelMusic").GetComponent<AudioSource>();
-            levelMusic.Stop(); 
-            GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
-            foreach (GameObject fish in fishes) Destroy(fish);
-                
-            float averageRating = GameManager.Instance.AverageRating;
-
-            if (averageRating >= 0f && averageRating < 1f)
-            {
-                endingDialogues[0].SetActive(true);
-                AudioManager.Instance.PlayOneShot(gameEndJingles[0], false); 
-            }
-            else if (averageRating >= 1f && averageRating < 2f)
-            {
-                endingDialogues[1].SetActive(true);
-                AudioManager.Instance.PlayOneShot(gameEndJingles[1], false);
-            }
-            else if (averageRating >= 2f && averageRating < 3f)
-            {
-                endingDialogues[2].SetActive(true);
-                AudioManager.Instance.PlayOneShot(gameEndJingles[2], false);
-            }
-            else if (averageRating >= 3f && averageRating <= 4f)
-            {
-                endingDialogues[3].SetActive(true);
-                AudioManager.Instance.PlayOneShot(gameEndJingles[3], false);
-            }
-            else if (averageRating >= 4f && averageRating <= 5f)
-            {
-                endingDialogues[4].SetActive(true);
-                AudioManager.Instance.PlayOneShot(gameEndJingles[4], false);
-            }
+            GameEnd();
         }
     }
 
+    private void GameEnd()
+    {
+        AudioSource levelMusic = GameObject.Find("LevelMusic").GetComponent<AudioSource>();
+        levelMusic.Stop();
+        GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
+        foreach (GameObject fish in fishes) Destroy(fish);
+
+        float averageRating = GameManager.Instance.AverageRating;
+
+        if (averageRating >= 0f && averageRating < 1f)
+        {
+            endingDialogues[0].SetActive(true);
+            AudioManager.Instance.PlayOneShot(gameEndJingles[0], false);
+        }
+        else if (averageRating >= 1f && averageRating < 2f)
+        {
+            endingDialogues[1].SetActive(true);
+            AudioManager.Instance.PlayOneShot(gameEndJingles[1], false);
+        }
+        else if (averageRating >= 2f && averageRating < 3f)
+        {
+            endingDialogues[2].SetActive(true);
+            AudioManager.Instance.PlayOneShot(gameEndJingles[2], false);
+        }
+        else if (averageRating >= 3f && averageRating <= 4f)
+        {
+            endingDialogues[3].SetActive(true);
+            AudioManager.Instance.PlayOneShot(gameEndJingles[3], false);
+        }
+        else if (averageRating >= 4f && averageRating <= 5f)
+        {
+            endingDialogues[4].SetActive(true);
+            AudioManager.Instance.PlayOneShot(gameEndJingles[4], false);
+        }
+    }
 
     private void SpawnFish()
     {
