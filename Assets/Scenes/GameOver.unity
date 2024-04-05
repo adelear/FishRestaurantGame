@@ -810,13 +810,15 @@ MonoBehaviour:
   startButton: {fileID: 0}
   settingsButton: {fileID: 0}
   backButton: {fileID: 0}
+  backButton2: {fileID: 0}
   quitButton: {fileID: 0}
   returnToMenuButton: {fileID: 675373642}
   resumeGame: {fileID: 0}
+  creditsButton: {fileID: 0}
   mainMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   settingsMenu: {fileID: 0}
-  scoreText: {fileID: 0}
+  creditsMenu: {fileID: 0}
   masterSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   sfxSlider: {fileID: 0}

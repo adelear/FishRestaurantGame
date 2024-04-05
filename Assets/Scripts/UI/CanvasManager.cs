@@ -190,7 +190,7 @@ public class CanvasManager : MonoBehaviour
     void ShowMainMenu()
     {
         settingsMenu.SetActive(false);
-        creditsMenu.SetActive(false); 
+        if (creditsMenu) creditsMenu.SetActive(false); 
         mainMenu.SetActive(true);
     }
     void StartGame()
@@ -211,7 +211,9 @@ public class CanvasManager : MonoBehaviour
 
     void OnSliderValueChanged(float value, string volume)
     {
-        audioMixer.SetFloat(volume, value - 80);
+        float normalizedValue = value / 100f; 
+        float adjustedVolume = Mathf.Lerp(-80f, 0f, normalizedValue);
+        audioMixer.SetFloat(volume, adjustedVolume);
     }
 
     private void AddPointerEnterEvent(EventTrigger trigger, UnityEngine.Events.UnityAction action)

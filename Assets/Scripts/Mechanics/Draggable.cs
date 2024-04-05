@@ -15,7 +15,7 @@ public class Draggable : MonoBehaviour
     float minZPosInRestaurant = -0.5f;
 
     float maxZPosInKitchen = 16f; 
-    float minZPosInKitchen = 10.2f;
+    float minZPosInKitchen = 12;
 
     float maxZPosInFreezer = 17f; 
     float minZPosInFreezer = 12f;

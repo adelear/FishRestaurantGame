@@ -887,12 +887,15 @@ MonoBehaviour:
   startButton: {fileID: 0}
   settingsButton: {fileID: 0}
   backButton: {fileID: 0}
+  backButton2: {fileID: 0}
   quitButton: {fileID: 1496041929692388457}
   returnToMenuButton: {fileID: 4885365926634006313}
   resumeGame: {fileID: 6378134938022963252}
+  creditsButton: {fileID: 0}
   mainMenu: {fileID: 0}
   pauseMenu: {fileID: 1095435232361261812}
   settingsMenu: {fileID: 0}
+  creditsMenu: {fileID: 0}
   masterSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   sfxSlider: {fileID: 0}

@@ -44,7 +44,7 @@ public class Cookables : Draggable
 
     protected void OnMouseUp() 
     {
-        if (!isValidPosition) transform.position = originalPosition;
+        //if (!isValidPosition) transform.position = originalPosition;
         SetSpriteTransparency(1f); 
         isBeingDragged = false; 
     }
@@ -71,6 +71,7 @@ public class Cookables : Draggable
     {
         if (!isCooking && canCook)
         {
+            isBeingDragged = false; 
             isCooking = true;
             canCook = false;
         }

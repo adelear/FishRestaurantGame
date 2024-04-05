@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -430,6 +434,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1353,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 10
+  eatingSound: {fileID: 0}
 --- !u!54 &755695553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1396,7 +1404,6 @@ MonoBehaviour:
   draggableLayer:
     serializedVersion: 2
     m_Bits: 8
-  zOffsetFactor: 0.01
   isSeated: 0
   isBeingDragged: 0
   originalPosition: {x: 0, y: 0, z: 0}
@@ -1407,6 +1414,7 @@ MonoBehaviour:
   foodQuality: 0
   canCook: 0
   sr: {fileID: 0}
+  borgerSprite: {fileID: 0}
 --- !u!65 &755695555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2408,6 +2416,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2547,6 +2559,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2573,6 +2589,10 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3000188657300364211, guid: a54bca9220ccbcf41bdffdaade4a1724, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 3170797722548219596, guid: a54bca9220ccbcf41bdffdaade4a1724, type: 3}
       propertyPath: m_Name
       value: Anchovy
@@ -2723,6 +2743,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2927,6 +2951,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2971,7 +2999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 10
+  eatingSound: {fileID: 0}
 --- !u!54 &1476423475
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3014,7 +3042,6 @@ MonoBehaviour:
   draggableLayer:
     serializedVersion: 2
     m_Bits: 8
-  zOffsetFactor: 0.01
   isSeated: 0
   isBeingDragged: 0
   originalPosition: {x: 0, y: 0, z: 0}
@@ -3025,6 +3052,7 @@ MonoBehaviour:
   foodQuality: 0
   canCook: 0
   sr: {fileID: 0}
+  borgerSprite: {fileID: 0}
 --- !u!65 &1476423477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3407,6 +3435,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3509,6 +3541,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3668,6 +3704,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3712,7 +3752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba5d99c65db88c4ca2d4d6c73af473c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 10
+  eatingSound: {fileID: 0}
 --- !u!54 &1717499653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3755,7 +3795,6 @@ MonoBehaviour:
   draggableLayer:
     serializedVersion: 2
     m_Bits: 8
-  zOffsetFactor: 0.01
   isSeated: 0
   isBeingDragged: 0
   originalPosition: {x: 0, y: 0, z: 0}
@@ -3766,6 +3805,7 @@ MonoBehaviour:
   foodQuality: 0
   canCook: 0
   sr: {fileID: 0}
+  borgerSprite: {fileID: 0}
 --- !u!65 &1717499655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4282,6 +4322,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4449,6 +4493,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4640,6 +4688,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4924,6 +4976,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7042551457511213021, guid: 04cb2480651e0f0489356f61ffa6565a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5027,6 +5083,10 @@ PrefabInstance:
       propertyPath: fishType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4143626445577892438, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6649026930968623300, guid: d592964cfe8f74945ae2466549d95b22, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 8

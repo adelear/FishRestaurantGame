@@ -111,6 +111,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3916265c790402e4dad5fe7710b274f3, type: 3}
   - {fileID: 8300000, guid: a12e79c63c76da04887d27eeca0057af, type: 3}
   - {fileID: 8300000, guid: de16bf84a0526ba4cb1dc572b3830214, type: 3}
+  flailAudioSource: {fileID: 0}
 --- !u!212 &7815323714987807753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -33,11 +33,11 @@ public class Fryer : MonoBehaviour
             }
             else
             {
-                other.transform.position = transform.position;
-                other.transform.parent = transform;
-                cookables.lockOntoNewPosition = true;
                 if (!cookables.isCooking && cookables.canCook)
                 {
+                    cookables.lockOntoNewPosition = true;
+                    other.transform.position = transform.position;
+                    other.transform.parent = transform;
                     cookables.isSeated = true;
                     cookables.StartCooking();
                     AudioManager.Instance.PlayOneShot(sizzle, false);  
