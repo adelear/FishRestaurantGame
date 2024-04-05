@@ -13,6 +13,7 @@ public class Patty : Cookables
     public override void StopCooking()
     {
         base.StopCooking();
+        PattyManager.Instance.DecreasePattyCount(); 
         GetComponent<SpriteRenderer>().sprite = borgerSprite;     
     }
 
