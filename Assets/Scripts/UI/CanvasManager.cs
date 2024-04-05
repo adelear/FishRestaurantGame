@@ -211,9 +211,7 @@ public class CanvasManager : MonoBehaviour
 
     void OnSliderValueChanged(float value, string volume)
     {
-        float normalizedValue = value / 100f; 
-        float adjustedVolume = Mathf.Lerp(-80f, 0f, normalizedValue);
-        audioMixer.SetFloat(volume, adjustedVolume);
+        audioMixer.SetFloat(volume, value - 80);
     }
 
     private void AddPointerEnterEvent(EventTrigger trigger, UnityEngine.Events.UnityAction action)
