@@ -160,7 +160,7 @@ public class Fish : Cookables
     {
         yield return new WaitForSeconds(3f);
         FishSpawner.Instance.currentFishNum--;
-        GameManager.Instance.ChangeRating(1f);
+        GameManager.Instance.ChangeRating(UnityEngine.Random.Range(0f, 0.99f));
         Destroy(gameObject);
     }
 
